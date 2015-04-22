@@ -1,5 +1,5 @@
-class AddCreatedByToBeats < ActiveRecord::Migration
+class AddUserIdToBeats < ActiveRecord::Migration
   def change
-    add_column :beats, :created_by, :string
+    add_column :beats, :user_id, :integer
   end
 end

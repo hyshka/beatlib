@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 # Declare ruby version for Heroku
 ruby '2.2.2'
 # Include for Heroku injection
-gem 'rails_12factor'
+gem 'rails_12factor', group: :production
 # Puma for Heroku
 gem 'puma'
 

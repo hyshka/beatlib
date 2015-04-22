@@ -4,6 +4,8 @@ source 'https://rubygems.org'
 ruby '2.2.2'
 # Include for Heroku injection
 gem 'rails_12factor'
+# Puma for Heroku
+gem 'puma'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'

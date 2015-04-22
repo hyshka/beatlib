@@ -1,0 +1,571 @@
+
+---
+favorites:
+  columns:
+  - id
+  - user_id
+  - beat_id
+  - created_at
+  - updated_at
+  records: 
+  - - 40
+    - 1
+    - 7
+    - '2015-04-21 14:19:47.522503'
+    - '2015-04-21 14:19:47.522503'
+  - - 41
+    - 1
+    - 8
+    - '2015-04-21 14:19:51.628582'
+    - '2015-04-21 14:19:51.628582'
+  - - 44
+    - 3
+    - 7
+    - '2015-04-21 20:36:40.788323'
+    - '2015-04-21 20:36:40.788323'
+  - - 45
+    - 3
+    - 5
+    - '2015-04-22 01:06:24.795424'
+    - '2015-04-22 01:06:24.795424'
+
+---
+taggings:
+  columns:
+  - id
+  - tag_id
+  - taggable_id
+  - taggable_type
+  - tagger_id
+  - tagger_type
+  - context
+  - created_at
+  records: 
+  - - 12
+    - 1
+    - 6
+    - Beat
+    - 
+    - 
+    - tags
+    - '2015-04-20 14:36:26.726006'
+  - - 13
+    - 2
+    - 6
+    - Beat
+    - 
+    - 
+    - tags
+    - '2015-04-20 14:36:26.731585'
+  - - 16
+    - 5
+    - 8
+    - Beat
+    - 
+    - 
+    - tags
+    - '2015-04-20 15:15:24.248662'
+  - - 17
+    - 2
+    - 8
+    - Beat
+    - 
+    - 
+    - tags
+    - '2015-04-20 15:15:24.252811'
+  - - 18
+    - 6
+    - 8
+    - Beat
+    - 
+    - 
+    - tags
+    - '2015-04-20 15:15:24.256761'
+  - - 19
+    - 4
+    - 5
+    - Beat
+    - 
+    - 
+    - tags
+    - '2015-04-20 15:26:13.250628'
+  - - 20
+    - 2
+    - 5
+    - Beat
+    - 
+    - 
+    - tags
+    - '2015-04-20 15:26:13.255432'
+  - - 21
+    - 1
+    - 9
+    - Beat
+    - 
+    - 
+    - tags
+    - '2015-04-20 15:53:27.466689'
+  - - 22
+    - 7
+    - 9
+    - Beat
+    - 
+    - 
+    - tags
+    - '2015-04-20 15:53:27.471311'
+  - - 23
+    - 5
+    - 10
+    - Beat
+    - 
+    - 
+    - tags
+    - '2015-04-20 15:53:46.919517'
+  - - 24
+    - 3
+    - 10
+    - Beat
+    - 
+    - 
+    - tags
+    - '2015-04-20 15:53:46.922539'
+  - - 25
+    - 1
+    - 11
+    - Beat
+    - 
+    - 
+    - tags
+    - '2015-04-20 18:25:13.928890'
+  - - 26
+    - 2
+    - 11
+    - Beat
+    - 
+    - 
+    - tags
+    - '2015-04-20 18:25:13.932592'
+  - - 27
+    - 8
+    - 12
+    - Beat
+    - 
+    - 
+    - tags
+    - '2015-04-20 18:25:37.533384'
+  - - 28
+    - 9
+    - 12
+    - Beat
+    - 
+    - 
+    - tags
+    - '2015-04-20 18:25:37.537601'
+  - - 29
+    - 5
+    - 13
+    - Beat
+    - 
+    - 
+    - tags
+    - '2015-04-20 18:45:15.875470'
+  - - 30
+    - 10
+    - 13
+    - Beat
+    - 
+    - 
+    - tags
+    - '2015-04-20 18:45:15.878881'
+  - - 31
+    - 11
+    - 14
+    - Beat
+    - 
+    - 
+    - tags
+    - '2015-04-20 18:46:06.597315'
+  - - 32
+    - 2
+    - 14
+    - Beat
+    - 
+    - 
+    - tags
+    - '2015-04-20 18:46:06.600115'
+  - - 35
+    - 3
+    - 7
+    - Beat
+    - 
+    - 
+    - tags
+    - '2015-04-20 19:15:16.999187'
+  - - 36
+    - 2
+    - 7
+    - Beat
+    - 
+    - 
+    - tags
+    - '2015-04-20 19:15:17.003057'
+  - - 39
+    - 1
+    - 16
+    - Beat
+    - 
+    - 
+    - tags
+    - '2015-04-21 20:17:23.531958'
+  - - 40
+    - 2
+    - 16
+    - Beat
+    - 
+    - 
+    - tags
+    - '2015-04-21 20:17:23.535204'
+  - - 41
+    - 1
+    - 17
+    - Beat
+    - 
+    - 
+    - tags
+    - '2015-04-21 20:22:08.910041'
+  - - 42
+    - 2
+    - 17
+    - Beat
+    - 
+    - 
+    - tags
+    - '2015-04-21 20:22:08.913943'
+  - - 43
+    - 4
+    - 18
+    - Beat
+    - 
+    - 
+    - tags
+    - '2015-04-21 20:48:15.470204'
+  - - 44
+    - 5
+    - 18
+    - Beat
+    - 
+    - 
+    - tags
+    - '2015-04-21 20:48:15.473242'
+
+---
+tags:
+  columns:
+  - id
+  - name
+  - taggings_count
+  records: 
+  - - 1
+    - rock
+    - 5
+  - - 2
+    - 4/4
+    - 8
+  - - 3
+    - swing
+    - 2
+  - - 4
+    - linear
+    - 2
+  - - 5
+    - jazz
+    - 4
+  - - 6
+    - Buddy Bolden
+    - 1
+  - - 7
+    - groovy
+    - 1
+  - - 8
+    - breakbeat
+    - 1
+  - - 9
+    - 6/8
+    - 1
+  - - 10
+    - 3/4
+    - 1
+  - - 11
+    - reggae
+    - 1
+
+---
+users:
+  columns:
+  - id
+  - created_at
+  - updated_at
+  - email
+  - encrypted_password
+  - reset_password_token
+  - reset_password_sent_at
+  - remember_created_at
+  - sign_in_count
+  - current_sign_in_at
+  - last_sign_in_at
+  - current_sign_in_ip
+  - last_sign_in_ip
+  - name
+  - location
+  - music_styles
+  - music_do
+  - website
+  - avatar_file_name
+  - avatar_content_type
+  - avatar_file_size
+  - avatar_updated_at
+  - confirmation_token
+  - confirmed_at
+  - confirmation_sent_at
+  - unconfirmed_email
+  records: 
+  - - 1
+    - '2015-04-14 15:00:24.805450'
+    - '2015-04-21 13:51:04.464660'
+    - bryan@hyshka.com
+    - "$2a$10$W2X1rnueKWONo044RXOE3uZNnrbChFKcLjZVT1ZM9tH/rRzWlJ6ke"
+    - 
+    - 
+    - 
+    - 5
+    - '2015-04-21 13:51:04.463493'
+    - '2015-04-21 13:05:13.955551'
+    - "::1"
+    - "::1"
+    - hyshka
+    - Edmonton
+    - Tango, Jazz
+    - I am a drummer
+    - http://hyshka.com
+    - 1908002_724877027572826_4817482911217505762_n.jpg
+    - image/jpeg
+    - 31024
+    - '2015-04-14 15:00:24.319244'
+    - 
+    - '2015-04-14 16:48:48.347379'
+    - '2015-04-14 16:48:38.969779'
+    - 
+  - - 3
+    - '2015-04-21 20:20:19.746853'
+    - '2015-04-22 01:04:04.624766'
+    - info@weeklyaphorism.com
+    - "$2a$10$SyXoFt1QqvA4sI6Rl7wJ3ectBk.qjHV33fyoJ.OnczSkWjbuTfQxC"
+    - 
+    - 
+    - 
+    - 2
+    - '2015-04-22 01:04:04.623978'
+    - '2015-04-21 20:20:36.180807'
+    - "::1"
+    - "::1"
+    - test
+    - ''
+    - ''
+    - ''
+    - ''
+    - 
+    - 
+    - 
+    - 
+    - 
+    - '2015-04-21 20:20:24.842077'
+    - '2015-04-21 20:20:19.925568'
+    - 
+
+---
+comments:
+  columns:
+  - id
+  - user_id
+  - body
+  - beat_id
+  - created_at
+  - updated_at
+  records: 
+  - - 13
+    - '1'
+    - Swingin' around the playground...
+    - 7
+    - '2015-04-21 13:09:27.863195'
+    - '2015-04-21 13:09:27.863195'
+  - - 15
+    - '3'
+    - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus.
+      Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur
+      ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas
+      mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia
+      consectetur.
+    - 7
+    - '2015-04-21 17:02:05.980699'
+    - '2015-04-21 17:02:05.980699'
+
+---
+beats:
+  columns:
+  - id
+  - title
+  - created_at
+  - updated_at
+  - midi_file_name
+  - midi_content_type
+  - midi_file_size
+  - midi_updated_at
+  - description
+  - user_id
+  - downloads
+  - created_by
+  records: 
+  - - 5
+    - Simple Linear Beat
+    - '2015-04-20 14:19:04.562934'
+    - '2015-04-20 15:26:13.230565'
+    - simple-linear-beat.mid
+    - audio/midi
+    - 127
+    - '2015-04-20 14:18:59.084665'
+    - Very basic linear beat.
+    - 1
+    - 0
+    - hyshka
+  - - 6
+    - Simple Rock Beat
+    - '2015-04-20 14:36:26.621217'
+    - '2015-04-20 14:36:26.621217'
+    - simple-rock-beat.mid
+    - audio/midi
+    - 159
+    - '2015-04-20 14:36:26.417892'
+    - Very basic rock beat.
+    - 1
+    - 0
+    - hyshka
+  - - 7
+    - Simple Swing Beat
+    - '2015-04-20 15:14:33.802046'
+    - '2015-04-21 14:57:50.880557'
+    - simple-swing-beat.mid
+    - audio/midi
+    - 141
+    - '2015-04-20 15:14:33.498282'
+    - Very basic swing beat.
+    - 1
+    - 4
+    - hyshka
+  - - 8
+    - The Big Four
+    - '2015-04-20 15:15:24.227811'
+    - '2015-04-20 15:15:24.227811'
+    - the-big-four.mid
+    - audio/midi
+    - 223
+    - '2015-04-20 15:15:24.044018'
+    - The classic beat played by Buddy Bolden.
+    - 1
+    - 0
+    - hyshka
+  - - 9
+    - Test Beat 1
+    - '2015-04-20 15:53:27.435743'
+    - '2015-04-20 15:53:27.435743'
+    - simple-linear-beat.mid
+    - audio/midi
+    - 127
+    - '2015-04-20 15:53:27.272183'
+    - ''
+    - 1
+    - 0
+    - hyshka
+  - - 10
+    - Test Beat 2
+    - '2015-04-20 15:53:46.904089'
+    - '2015-04-20 15:53:46.904089'
+    - simple-swing-beat.mid
+    - audio/midi
+    - 141
+    - '2015-04-20 15:53:46.718565'
+    - ''
+    - 1
+    - 0
+    - hyshka
+  - - 11
+    - Test Beat 3
+    - '2015-04-20 18:25:13.913192'
+    - '2015-04-20 18:25:13.913192'
+    - simple-rock-beat.mid
+    - audio/midi
+    - 159
+    - '2015-04-20 18:25:13.747396'
+    - ''
+    - 1
+    - 0
+    - hyshka
+  - - 12
+    - Test Beat 4
+    - '2015-04-20 18:25:37.504898'
+    - '2015-04-20 18:25:37.504898'
+    - simple-rock-beat.mid
+    - audio/midi
+    - 159
+    - '2015-04-20 18:25:37.313175'
+    - ''
+    - 1
+    - 0
+    - hyshka
+  - - 13
+    - Test Beat 5
+    - '2015-04-20 18:45:15.858362'
+    - '2015-04-20 18:45:15.858362'
+    - simple-linear-beat.mid
+    - audio/midi
+    - 127
+    - '2015-04-20 18:45:15.675279'
+    - ''
+    - 1
+    - 0
+    - hyshka
+  - - 14
+    - Test Beat 6
+    - '2015-04-20 18:46:06.581883'
+    - '2015-04-20 18:46:06.581883'
+    - simple-swing-beat.mid
+    - audio/midi
+    - 141
+    - '2015-04-20 18:46:06.380309'
+    - ''
+    - 1
+    - 0
+    - hyshka
+  - - 17
+    - My Test Beat
+    - '2015-04-21 20:22:08.891746'
+    - '2015-04-21 20:22:08.891746'
+    - the-big-four.mid
+    - audio/midi
+    - 223
+    - '2015-04-21 20:22:08.697818'
+    - ''
+    - 3
+    - 0
+    - test
+  - - 18
+    - This beat has a really long name
+    - '2015-04-21 20:48:15.454758'
+    - '2015-04-21 20:48:15.454758'
+    - simple-linear-beat.mid
+    - audio/midi
+    - 127
+    - '2015-04-21 20:48:15.236152'
+    - ''
+    - 3
+    - 0
+    - test

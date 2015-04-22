@@ -1,0 +1,528 @@
+/******************************************************************
+Site Name:
+Author:
+
+Stylesheet: Base Mobile Stylesheet
+******************************************************************/
+
+/*********************
+GENERAL STYLES
+*********************/
+/*
+ * 14px base size * 1.5em line height = 21
+ * 21 / 2 = 10.5
+ * cutting the base-line-height in half allows for easier alignment
+ */
+$base-font-size: 14px !global;
+$base-line-height: 10.5px !global;
+@include establish-baseline;
+
+html {
+  @include adjust-leading-to(2); // resets the line height after cutting it in half
+}
+
+body {
+	font-family: $sans-serif;
+	color: $body-fg;
+    background-color: $body-bg;
+  	-webkit-font-smoothing: antialiased;
+  	-moz-osx-font-smoothing: grayscale;
+}
+
+/*********************
+LAYOUT & GRID STYLES
+*********************/
+
+#container { // 36.5em
+	@include container(45em 12);
+}
+
+.header, #content, .footer {
+	@include apply-side-rhythm-border(left, 0px, .75, 14px);
+	@include apply-side-rhythm-border(right, 0px, .75, 14px);
+}
+
+/*********************
+LINK STYLES
+*********************/
+
+a, a:visited {
+	color: $link-color;
+
+	/* on hover */
+	&:hover, &:focus {
+		color: $link-hover;
+	}
+
+	/* on click */
+	&:active {
+
+	}
+
+	/* mobile tap color */
+	&:link {
+		/*
+		this highlights links on iPhones/iPads.
+		so it basically works like the :hover selector
+		for mobile devices.
+		*/
+		-webkit-tap-highlight-color : rgba( 0, 0, 0, 0.3 );
+	}
+}
+
+/******************************************************************
+H1, H2, H3, H4, H5 STYLES
+******************************************************************/
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
+	text-rendering: optimizelegibility;
+	font-weight: 500;
+	/*
+	if you're going to use webfonts, be sure to check your weights
+	http://css-tricks.com/watch-your-font-weight/
+	*/
+
+	/* removing text decoration from all headline links */
+	a {
+		text-decoration: none;
+	}
+}
+
+h1, .h1 {
+	@include leader(2, 28px);
+	@include adjust-font-size-to(28px, 2.5);
+	@include trailer(1.5, 28px);
+}
+
+h2, .h2 {
+	@include leader(2, 20px);
+	@include adjust-font-size-to(20px, 2);
+	@include trailer(1.5, 20px);
+}
+
+h3, .h3 {
+	@include leader(2, 16px);
+	@include adjust-font-size-to(16px, 2);
+	@include trailer(1.5, 16px);
+}
+
+h4, .h4 {
+	@include leader(2, 14px);
+	@include adjust-font-size-to(14px, 2);
+	@include trailer(2, 14px);
+	font-weight: 700;
+}
+
+h5, .h5 {
+	@include leader(2, 12px);
+	@include adjust-font-size-to(12px, 2);
+	@include trailer(1.5, 12px);
+	text-transform: uppercase;
+	letter-spacing: 2px;
+}
+
+/*********************
+HEADER STYLES
+*********************/
+
+.header {
+    @include trailer(3, 14px);
+}
+
+#logo {
+}
+
+#main-nav {
+}
+
+/*********************
+NAVIGATION STYLES
+*********************/
+
+.nav {
+	margin: 0;
+
+	li {
+      float: left;
+      position: relative;
+
+		a {
+			display: block;
+			text-decoration: none;
+			@include rhythm-borders(0px, .75, 14px);
+			@include apply-side-rhythm-border(bottom, 1px, .75, 14px);
+		}
+
+		&:first-child {}
+
+		&:last-child {}
+
+        ul.sub-menu,
+		ul.children {
+			display: block;
+			margin: 0;
+			@include apply-side-rhythm-border(left, 0px, 1.5, 14px);
+			@include trailer(.75, 14px);
+
+			li {
+
+				a {
+					@include apply-side-rhythm-border(top, 0px, .375, 14px);
+					@include apply-side-rhythm-border(bottom, 0px, .375, 14px);
+				}
+			}
+		}
+
+	} /* end .menu li */
+
+	/* highlight current page */
+	li.current-menu-item,
+	li.current_page_item,
+	li.current_page_ancestor {
+
+		a {
+            background-color: $nav-active;
+        }
+
+	}  /* end current highlighters */
+
+} /* end .nav */
+
+#nav-beats {
+  @include trailer(1.5, 14px);
+  
+  ul {
+   margin: 0;
+    
+   li {
+     @include gallery(6 of 12);
+     @include trailer(.75, 14px);
+     position: relative;
+     
+     #tags {
+       li {
+         @include span(12);
+         @include trailer(0, 14px);
+         display: block;
+         a {
+           @include rhythm-borders(0px, .25, 14px);
+         }
+       }
+     }
+   }
+ }
+}
+
+#nav-tags {
+  ul {
+   margin: 0;
+   li {
+   }
+ }
+}
+
+#nav-tags, #search {
+  @include trailer(1.5, 14px);
+}
+
+#tags {
+  background-color: darken(white, 12%);
+  position: absolute;
+  z-index: 99;
+  width: 100%;
+  @include box-sizing(border-box);
+  @include trailer(1.5, 14px);
+  display: block;
+  overflow: hidden;
+  @include opacity(0);
+  max-height: 0;
+  @include transition(all .5s ease-in-out);
+  
+  
+  
+  &.active {
+    @include opacity(1);
+    max-height: 30em;
+  }
+}
+
+.nav-search-btn {
+  @include box-sizing(border-box !important);
+  color: $body-fg !important;
+  @include adjust-leading-to(2, 14px);
+}
+
+/*********************
+POSTS & CONTENT STYLES
+*********************/
+
+#beats {
+  @include leader(3, 14px);
+}
+
+p, ul, ol {
+    @include leader(1.5, 14px);
+    @include trailer(1.5, 14px);
+}
+
+#content {
+	
+}
+
+.beat-index, .beat-show {
+  .audio, .download-btn, .user-avatar {
+    float: left;
+  }
+  
+  
+}
+
+.beat-index {
+  .beat-title {
+    @include leader(0, 16px);
+    @include trailer(.5, 16px);
+  }
+}
+
+.beat {
+  @include trailer(2.25, 14px);
+  
+  header {
+    @include trailer(.75, 14px);
+    
+    .play-pause-btn, .download-btn {
+      margin-right: .5em;
+      height: 70px;
+      width: 70px;
+      line-height: 70px;
+      span {
+        //line-height: 70px;
+      }
+    }
+    
+    .user {
+      margin: 0;
+    }
+    
+    .tag {
+      //@include leader(.325, 14px);
+      //@include trailer(.325, 14px);
+    }
+  }
+}
+
+.beat-show {
+  header {
+    @include trailer(1, 14px);
+    
+    .beat-title {
+      @include trailer(2, 20px);
+    }
+  }
+}
+
+.meta {
+  @include leader(.75, 14px);
+  @include trailer(0, 14px);
+  
+  .meta-btn {
+    margin-left: .25em;
+  }
+  .tag {
+    margin-left: 0;
+  }
+  .download {
+    
+  }
+  .favorite {
+    margin-left: .25em;
+    .meta-btn {
+      margin-left: 0;
+    }
+  }
+}
+
+.user-info, .user-avatar {
+  @include leader(0, 14px);
+  @include trailer(1.5, 14px);
+}
+
+#user-beats, #user-favorites {
+  li {
+    @include trailer(1, 14px);
+    
+    h3 {
+      @include trailer(.5, 14px);
+    }
+  }
+}
+
+/* post meta */
+.byline {
+    font-style: italic;
+    @include leader(.75, 12px);
+    @include trailer(0, 12px);
+    @include adjust-font-size-to(12px, 1);
+}
+
+		/* content */
+		#entry-content {
+
+			ul, ol {
+				@include apply-side-rhythm-border(left, 0px, 1, 14px);
+				margin-left:1em;
+
+				li {
+					text-indent:-1em;
+				}
+
+				ol,ul {
+					@include apply-side-rhythm-border(left, 0px, 2, 14px);
+					margin: 0;
+				}
+
+			}
+
+			ul {
+				list-style: disc inside none;
+			}
+
+			ol {
+				list-style: decimal inside none;
+
+				ol {
+					list-style: upper-alpha inside;
+
+					ol {
+						list-style: lower-roman inside;
+					}
+				}
+
+			}
+
+		} /* end .entry-content */
+
+img {
+  //@include trailer(1, 14px);
+  max-width: 100%;
+  height: auto;
+  vertical-align: top;
+  display: block;
+  border-radius: 6px;
+}
+
+a img {
+  @include transition(opacity 0.2s ease-in-out);
+  position: relative;
+
+  &:hover {
+      @include opacity(0.75);
+  }
+
+  // clicking on the image anchor
+  &:active {
+    top: 1px; // adds a tiny hop to the click
+  } // end active
+}
+
+/******************************************************************
+COMMENT STYLES
+******************************************************************/
+
+.comment {
+  @include trailer(2, 14px);
+  
+  header {
+    @include trailer(1, 14px);
+    
+    .avatar, .comment-meta {
+      float: left;
+      margin-right: .5em;
+    }
+    
+    .user {
+      @include leader(0, 14px);
+      @include trailer(0, 14px);
+    }
+  }
+  
+  .delete-comment {
+    @include adjust-font-size-to(12px, 1);
+  }
+}
+
+/******************************************************************
+PAGE NAVI STYLES
+******************************************************************/
+
+#pagination {
+  float:left;
+  position:relative;
+  left:50%;
+}
+
+.pagination {
+  @include leader(0, 14px);
+  @include trailer(1.5, 14px);
+  text-align: center;
+  float:left;
+  position:relative;
+  left:-50%;
+
+  ul {
+    display: block;
+    //background-color: $white;
+    white-space: nowrap;
+    padding: 0;
+    clear: both;
+    border-radius: 3px;
+  }
+
+  li {
+    padding: 0;
+    margin: 0;
+    float: left;
+    display: inline-block;
+    overflow: hidden;
+    border-right: 1px solid;
+    
+    & > a, & > span {
+      margin: 0;
+      text-decoration: none;
+      padding: 0;
+      font-weight: normal;
+      @include rhythm-borders(0px, .5, 14px);
+      min-width: 2.25em;
+      display: inline-block;
+
+      &:hover, &:focus {
+        background-color: $black;
+        color: $white;
+      }      
+    }
+    &.current {
+      & > a, & > span {
+        cursor: default;
+        //color: $text-color;
+  
+        &:hover, &:focus {
+          background-color: $white;
+          color: $body-fg;
+        }
+      }
+    }
+    &:last-child {
+      border-right: 0;
+    }
+  }
+} /* end .pagination */
+
+/*********************
+FOOTER STYLES
+*********************/
+
+.footer {
+	clear: both;
+	@include trailer(1.5, 14px);
+}
+

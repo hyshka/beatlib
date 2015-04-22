@@ -1,0 +1,12 @@
+<%= form_for([@beat, @beat.comments.build], remote: true) do |f| %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+
+  <div class="validation-error"></div>
+
+  <p>
+    <%= f.text_area :body, placeholder: "Write a comment..." %>
+  </p>
+
+  <p><%= f.submit "Submit Comment" %></p>
+
+<% end %>

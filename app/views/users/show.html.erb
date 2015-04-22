@@ -1,0 +1,31 @@
+<h1 class="h2">User Profile</h1>
+
+<% if user_signed_in? && @user.id.to_s == current_user.id.to_s %>
+  <p><%= link_to 'Edit account', edit_user_registration_path %></p>
+<% end %>
+
+<div class="cf">
+  <%= image_tag @user.avatar.url(:medium), class: "user-avatar" if @user.avatar.url(:medium) %>
+
+  <ul class="user-info">
+    <li>Username: <%= @user.name if @user.name %></li>
+    <li>Location: <%= @user.location if @user.location %></li>
+    <li>Website: <%= @user.website if @user.website %></li>
+    <li>About <%= @user.name if @user.name %>:</li>
+    <li>Favorite musical styles or artists: <%= @user.music_styles if @user.music_styles %></li>
+    <li>What do you do with music: <%= @user.music_do if @user.music_do %></li>    
+  </ul>
+</div>
+
+<h2 class="h3">User Beats</h2>
+
+<ul id="user-beats">
+  <%= render partial: 'beat', collection: @beats %>
+</ul>
+
+<h2 class="h3">User Favorites</h2>
+
+<ul id="user-favorites">
+  <%= render partial: 'favorites/favorite', collection: @favorites %>
+</ul>
+

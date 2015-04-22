@@ -1,0 +1,72 @@
+<h1>Register</h1>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <h2>Required Fields</h2>
+
+  <p>
+    <%= f.label :username %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </p>
+
+  <p>
+    <%= f.label :email %><br />
+    <%= f.email_field :email %>
+  </p>
+
+  <p>
+    <%= f.label :password %>
+    <% if @validatable %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+  </p>
+
+  <p>
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </p>
+
+  <h2>Optional Information</h2>
+
+  <p>
+    <%= f.label :where_are_you_from? %><br />
+    <%= f.text_field :location %>
+  </p>
+
+  <p>
+    <%= f.label :what_are_your_favorite_musical_styles_or_artists? %><br />
+    <%= f.text_field :music_styles %>
+  </p>
+
+  <p>
+    <%= f.label :what_do_you_do_with_music? %><br />
+    <%= f.text_field :music_do %>
+  </p>
+
+  <p>
+    <%= f.label :website %><br />
+    <%= f.text_field :website %>
+  </p>
+
+  <%=
+  # social media?
+  %>
+
+  <p>
+    <%= f.label :profile_picture %><br>
+    Will accept JPG, PNG, and GIF with a maximum filesize of 200kb<br>
+    <%= f.file_field :avatar %>
+  </p>
+
+  <%=
+  # captcha?
+  %>
+
+  <p>
+    <%= f.submit "Register" %>
+  </p>
+<% end %>
+
+<%= render "devise/shared/links" %>

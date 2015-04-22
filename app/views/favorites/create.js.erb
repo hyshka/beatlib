@@ -1,0 +1,2 @@
+$(".beat[data-dom-id=<%= dom_id(@beat) %>] .favorite").html("<%= escape_javascript( render partial: 'beats/meta_favorite', locals: {beat: @beat} ) %>");
+$("#messages").html("<%= escape_javascript( render 'layouts/messages' ) %>");

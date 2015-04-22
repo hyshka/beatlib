@@ -1,0 +1,16 @@
+<li><h3 class="h4"><%= link_to beat.title, beat_path(beat) %></h3>
+  <span class="fa fa-tag"></span>&nbsp;<%= beat.tags.first.to_s.titleize %> -
+  <span class="fa fa-download"></span>&nbsp;<%= beat.downloads %> -
+  <span class="fa fa-heart"></span>&nbsp;<%= Favorite.all.where(beat_id: beat.id).size %> -
+  <span class="fa fa-comment"></span>&nbsp;<%= beat.comments.size %>
+
+  <% if user_signed_in? && beat.user_id.to_s == current_user.id.to_s %>
+    - <%= link_to beat_path(beat),
+              method: :delete,
+              remote: true,
+              class: 'delete-btn',
+              data: { confirm: 'Are you sure?' } do %>
+      <span class="fa fa-trash-o"></span>&nbsp;Delete
+      <% end %>
+  <% end %>
+</li>

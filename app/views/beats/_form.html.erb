@@ -1,0 +1,45 @@
+<%= form_for @beat do |f| %>
+
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :created_by, value: current_user.name %>
+
+  <% if @beat.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@beat.errors.count, "error") %> prohibited
+        this beat from being saved:
+      </h2>
+      <ul>
+        <% @beat.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </p>
+
+  <p>
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </p>
+
+  <p>
+    <%= f.label :tag_list %><br>
+    Add your genre, time signatures, or other labels here to help people find your beats.
+    <%= f.collection_select(:tag_list, ActsAsTaggableOn::Tag.all, :name, :name, {}, { multiple: 'multiple' } ) %>
+  </p>
+
+  <p>
+    <%= f.label :midi_file %><br>
+    <%= f.file_field :midi %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+
+<% end %>

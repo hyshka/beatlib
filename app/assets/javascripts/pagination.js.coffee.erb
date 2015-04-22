@@ -1,0 +1,9 @@
+#jQuery ->
+#  if $('#pagination').size() > 0
+#    $(window).on 'scroll', ->
+#      more_beats_url = $('.pagination a.next_page').attr('href')
+#      if more_beats_url && $(window).scrollTop() > $(document).height() - $(window).height() - 60
+#        $('.pagination').html('<img src="<%= asset_path('ajax-loader.gif') %>" alt="Loading..." title="Loading..." />')
+#        $.getScript more_beats_url
+#      return
+#    return

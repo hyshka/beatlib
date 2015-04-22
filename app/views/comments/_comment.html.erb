@@ -1,0 +1,28 @@
+<article class="comment">
+  
+  <header class="cf">
+    <%= link_to user_path(User.find(comment.user_id)), title: "View #{User.find(comment.user_id).name}'s profile", class: "avatar" do %>
+      <%= image_tag User.find(comment.user_id).avatar.url(:thumb) if User.find(comment.user_id).avatar.url(:thumb) %>
+    <% end %>
+    <div class="comment-meta">
+      <p class="user"><%= User.find(comment.user_id).name%></p>
+      <p class="byline">Created on <%= local_time(comment.created_at) %></p>
+    </div>
+  </header>
+
+  <section>
+    <%= comment.body %>
+  </section>
+
+  <% if user_signed_in? && comment.user_id.to_s == current_user.id.to_s %>
+    <footer>
+        <%= link_to [comment.beat, comment],
+            method: :delete,
+            remote: true,
+            class: 'delete-comment',
+            data: { confirm: 'Are you sure?' } do %>
+            Delete Comment
+        <% end %>
+    </footer>
+  <% end %>
+</article>

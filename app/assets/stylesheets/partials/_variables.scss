@@ -1,0 +1,67 @@
+/******************************************************************
+Site Name:
+Author:
+
+Stylesheet: Variables
+******************************************************************/
+
+// Compass
+
+$default-rhythm-border-style: solid;
+
+// Susy Grid
+
+$susy: (
+	math: fluid,
+	columns: 12,
+	gutter-position: after,
+	gutters: 1/2,
+	column-width: false,
+	debug: (
+	    image: hide,
+	    color: rgba(#66f, .25),
+	    output: background,
+	    toggle: top right,
+	),
+);
+
+/*********************
+COLORS
+*********************/
+
+$alert-yellow:      #ebe16f;
+$alert-red:         #fbe3e4;
+$alert-green:       #e6efc2;
+$alert-blue:        #d5edf8;
+
+$black:             #41453f;
+$white:             #f5f4ed;
+
+$light-gray:        darken($white, 3%);
+$gray:              darken($white, 9%);
+
+$border-color:      #ccc;
+$disabled-gray:     #cfcfcf;
+
+$link-color:        $black;
+$link-hover:        darken($link-color, 9%);
+
+$body-fg:			$black;
+$body-bg:			$white;
+
+$nav-bg:			lighten($white, 6%);
+$nav-border:		darken($white, 9%);
+$nav-shadow:		darken($white, 18%);
+$nav-hover:			$light-gray;
+$nav-active:		$nav-hover;
+
+$blockquote-border: $black;
+$blockquote-quote:  $black;
+
+$gal-img-bg:		$body-bg;
+$gal-img-border:	$nav-border;
+$gal-img-shadow:	$nav-shadow;
+
+$form-bg:           lighten($white, 6%);
+$form-bg-active:    $light-gray;
+

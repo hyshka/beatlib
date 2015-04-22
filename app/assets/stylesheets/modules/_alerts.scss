@@ -1,0 +1,39 @@
+/******************************************************************
+Site Name:
+Author:
+
+Stylesheet: Alert Styles
+******************************************************************/
+
+// alerts and notices
+%alert {
+    @include adjust-font-size-to(12px);
+    @include leader(0, 12px);
+    @include trailer(0, 12px);
+    @include rhythm-borders(1px, .5, 12px);
+    //display: none;
+}
+
+.alert-help {
+  @extend %alert;
+  border-color: darken($alert-yellow, 5%);
+  background: $alert-yellow;
+}
+
+.alert-info {
+  @extend %alert;
+  border-color: darken($alert-blue, 5%);
+  background: $alert-blue;
+}
+
+.alert-error {
+  @extend %alert;
+  border-color: darken($alert-red, 5%);
+  background: $alert-red;
+}
+
+.alert-success {
+  @extend %alert;
+  border-color: darken($alert-green, 5%);
+  background: $alert-green;
+}

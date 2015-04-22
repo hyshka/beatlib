@@ -1,0 +1,24 @@
+<h1 class="page-title h2">Browse Beats</h1>
+
+<nav id="nav-beats" class="cf">
+  <ul>
+    <li><%= link_to "Popular", beats_path(sort: "Popular"), method: :get, remote: true, class: "sort-popular nav-beats-btn", title: "Sort beats by downloads" %></li>
+    <li><%= link_to "Latest", beats_path(sort: "Latest"), method: :get, remote: true, class: "sort-latest nav-beats-btn", title: "Sort beats by age" %></li>
+    <li id="nav-tags">
+      <%= render partial: 'nav_tags', locals: { selected_tag: @selected_tag } %>
+    </li>
+    <li id="search">
+      <%= search_form_for @q, remote: true do |f| %>
+        <%= f.search_field :title_or_description_or_created_by_or_tags_name_cont, placeholder: "Search for...", class: "nav-search-btn" %>
+      <% end %>
+    </li>
+  </ul>
+</nav>
+
+<div id="beats" class="cf">
+  <%= render @sorted_beats %>
+</div>
+
+<nav id="pagination">
+  <%= will_paginate @sorted_beats, previous_label: "<span class='fa fa-arrow-left'></span>", next_label: "<span class='fa fa-arrow-right'></span>", class: "pagination cf" %>
+</nav>

@@ -33,23 +33,24 @@ module Paperclip
 
       begin
         parameters = []
+        parameters << "-c ~/.apt/etc/timidity/timidity.cfg"
         parameters << File.expand_path(src.path)
         parameters << "-Ow -o - | ffmpeg -y -i - -acodec libmp3lame -ac 1 -ab 128k"
         parameters << File.expand_path(dst.path)
-        
+
         parameters = parameters.flatten.compact.join(" ").strip.squeeze(" ")
 
         success = timidity(parameters)
-        
+
         rescue Cocaine::ExitStatusError => e
           raise Paperclip::Error, "There was an error processing the mp3 for #{@basename}"
         rescue Cocaine::CommandNotFoundError => e
           raise Paperclip::Errors::CommandNotFoundError.new("Could not run the `timidity` command. Please install Timidity++ and ffmpeg.")
       end
-      
+
       dst
     end
-    
+
     # The convert method runs the convert binary with the provided arguments.
     # See Paperclip.run for the available options.
     def timidity(arguments = "", local_options = {})

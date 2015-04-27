@@ -23,6 +23,15 @@ Things you may want to cover:
 
 * ...
 
+# Ruby
+* Ruby 2.2.2
+* Ruby on Rails 4.2.1
+
+# Dependancies
+* imagemagick
+* ffmpeg
+* timidity
+** fluid-soundfont-gm
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.

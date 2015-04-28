@@ -35,7 +35,7 @@ module Paperclip
         parameters = []
         parameters << "-c ~/.apt/etc/timidity/timidity.cfg"
         parameters << File.expand_path(src.path)
-        parameters << "-Ow -o - | ffmpeg -y -i - -acodec libmp3lame -ac 1 -ab 128k"
+        parameters << "-Ow2 -o - | ffmpeg -y -i - -acodec libmp3lame -ac 1 -ab 128k"
         parameters << File.expand_path(dst.path)
 
         parameters = parameters.flatten.compact.join(" ").strip.squeeze(" ")

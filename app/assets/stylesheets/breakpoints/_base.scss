@@ -190,15 +190,15 @@ NAVIGATION STYLES
 
 #nav-beats {
   @include trailer(1.5, 14px);
-  
+
   ul {
    margin: 0;
-    
+
    li {
      @include gallery(6 of 12);
      @include trailer(.75, 14px);
      position: relative;
-     
+
      #tags {
        li {
          @include span(12);
@@ -237,9 +237,9 @@ NAVIGATION STYLES
   @include opacity(0);
   max-height: 0;
   @include transition(all .5s ease-in-out);
-  
-  
-  
+
+
+
   &.active {
     @include opacity(1);
     max-height: 30em;
@@ -266,15 +266,15 @@ p, ul, ol {
 }
 
 #content {
-	
+
 }
 
 .beat-index, .beat-show {
   .audio, .download-btn, .user-avatar {
     float: left;
   }
-  
-  
+
+
 }
 
 .beat-index {
@@ -286,10 +286,10 @@ p, ul, ol {
 
 .beat {
   @include trailer(2.25, 14px);
-  
+
   header {
     @include trailer(.75, 14px);
-    
+
     .play-pause-btn, .download-btn {
       margin-right: .5em;
       height: 70px;
@@ -299,11 +299,11 @@ p, ul, ol {
         //line-height: 70px;
       }
     }
-    
+
     .user {
       margin: 0;
     }
-    
+
     .tag {
       //@include leader(.325, 14px);
       //@include trailer(.325, 14px);
@@ -314,7 +314,7 @@ p, ul, ol {
 .beat-show {
   header {
     @include trailer(1, 14px);
-    
+
     .beat-title {
       @include trailer(2, 20px);
     }
@@ -324,7 +324,7 @@ p, ul, ol {
 .meta {
   @include leader(.75, 14px);
   @include trailer(0, 14px);
-  
+
   .meta-btn {
     margin-left: .25em;
   }
@@ -332,7 +332,7 @@ p, ul, ol {
     margin-left: 0;
   }
   .download {
-    
+
   }
   .favorite {
     margin-left: .25em;
@@ -350,7 +350,7 @@ p, ul, ol {
 #user-beats, #user-favorites {
   li {
     @include trailer(1, 14px);
-    
+
     h3 {
       @include trailer(.5, 14px);
     }
@@ -431,21 +431,21 @@ COMMENT STYLES
 
 .comment {
   @include trailer(2, 14px);
-  
+
   header {
     @include trailer(1, 14px);
-    
+
     .avatar, .comment-meta {
       float: left;
       margin-right: .5em;
     }
-    
+
     .user {
       @include leader(0, 14px);
       @include trailer(0, 14px);
     }
   }
-  
+
   .delete-comment {
     @include adjust-font-size-to(12px, 1);
   }
@@ -485,7 +485,7 @@ PAGE NAVI STYLES
     display: inline-block;
     overflow: hidden;
     border-right: 1px solid;
-    
+
     & > a, & > span {
       margin: 0;
       text-decoration: none;
@@ -498,13 +498,13 @@ PAGE NAVI STYLES
       &:hover, &:focus {
         background-color: $black;
         color: $white;
-      }      
+      }
     }
-    &.current {
+    &.current, &.disabled {
       & > a, & > span {
         cursor: default;
         //color: $text-color;
-  
+
         &:hover, &:focus {
           background-color: $white;
           color: $body-fg;
@@ -525,4 +525,3 @@ FOOTER STYLES
 	clear: both;
 	@include trailer(1.5, 14px);
 }
-

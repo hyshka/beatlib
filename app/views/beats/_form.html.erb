@@ -28,16 +28,17 @@
   </p>
 
   <p>
-    <%= f.label :tag_list %><br>
-    Add your genre, time signatures, or other labels here to help people find your beats.
+    <%= f.label :tags %><br>
+    Add your genre, time signatures, or other labels here to help people find your beats. The first tag in this list will be chosen as the primary and there is a maximum of 5 tags.<br>
     <%= f.collection_select(:tag_list, ActsAsTaggableOn::Tag.all, :name, :name, {}, { multiple: 'multiple' } ) %>
   </p>
 
   <p>
-    <%= f.label :midi_file %><br>
+    <%= f.label :midi_upload %><br>
+    Midi files only with a maximum filesize of 10kb<br>
     <%= f.file_field :midi %>
   </p>
- 
+
   <p>
     <%= f.submit %>
   </p>

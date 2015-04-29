@@ -3,8 +3,8 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 ## on page change for turbolinks
-$(document).on "page:change", ->
-  
+$(document).on "page:update", ->
+
   # setup our controls to play/pause beats
   $('.play-pause-btn').on 'click', ->
     # set var for this button
@@ -28,29 +28,3 @@ $(document).on "page:change", ->
       return
     ), true
     return
-
-  # Selectize.js
-  $('#beat_tag_list').selectize
-    plugins: ['remove_button', 'drag_drop']
-    persist: false
-    create: true
-    maxItems: 5
-    createOnBlur: true
-    createFilter: (input) ->
-      #min length of 3 characters
-      input.length >= parseInt(3, 10)
-  
-  # Selectize.js with unique filter
-  #unique = $('#beat_tag_list').selectize(
-  #  plugins: ['remove_button', 'drag_drop']
-  #  persist: false
-  #  create: true
-  #  createOnBlur: true
-  #  maxItems: 5
-  #  createFilter: (input) ->
-  #    input = input.toLowerCase()
-  #    $.grep(unique.getValue(), (value) ->
-  #      value.toLowerCase() == input
-  #    ).length == 0
-  #  )[0].selectize
-  

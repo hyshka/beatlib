@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150421140422) do
+ActiveRecord::Schema.define(version: 20150429052234) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "beats", force: :cascade do |t|
     t.string   "title"
@@ -27,7 +30,7 @@ ActiveRecord::Schema.define(version: 20150421140422) do
     t.string   "created_by"
   end
 
-  add_index "beats", ["user_id"], name: "index_beats_on_user_id"
+  add_index "beats", ["user_id"], name: "index_beats_on_user_id", using: :btree
 
   create_table "comments", force: :cascade do |t|
     t.string   "user_id"
@@ -37,8 +40,8 @@ ActiveRecord::Schema.define(version: 20150421140422) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "comments", ["beat_id"], name: "index_comments_on_beat_id"
-  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+  add_index "comments", ["beat_id"], name: "index_comments_on_beat_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "favorites", force: :cascade do |t|
     t.integer  "user_id"
@@ -47,8 +50,8 @@ ActiveRecord::Schema.define(version: 20150421140422) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "favorites", ["beat_id"], name: "index_favorites_on_beat_id"
-  add_index "favorites", ["user_id"], name: "index_favorites_on_user_id"
+  add_index "favorites", ["beat_id"], name: "index_favorites_on_beat_id", using: :btree
+  add_index "favorites", ["user_id"], name: "index_favorites_on_user_id", using: :btree
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
@@ -60,15 +63,15 @@ ActiveRecord::Schema.define(version: 20150421140422) do
     t.datetime "created_at"
   end
 
-  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
-  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
+  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
 
   create_table "tags", force: :cascade do |t|
     t.string  "name"
     t.integer "taggings_count", default: 0
   end
 
-  add_index "tags", ["name"], name: "index_tags_on_name", unique: true
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.datetime "created_at",                          null: false
@@ -96,10 +99,12 @@ ActiveRecord::Schema.define(version: 20150421140422) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
+    t.string   "permalink"
+    t.boolean  "terms_of_service"
   end
 
-  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end

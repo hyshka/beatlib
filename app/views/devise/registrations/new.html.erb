@@ -65,6 +65,11 @@
   %>
 
   <p>
+    <%= f.label :terms_of_service %><br>
+    <%= f.check_box :terms_of_service %> By registering you agree to our <%=  link_to 'terms of service', terms_of_service_path %> and to release any midi files you upload to the <%=  link_to 'public domain', 'http://creativecommons.org/publicdomain/zero/1.0/' %>.
+  </p>
+
+  <p>
     <%= f.submit "Register" %>
   </p>
 <% end %>

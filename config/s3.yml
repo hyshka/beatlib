@@ -1,0 +1,12 @@
+# config for DreamObjects storage
+default: &default
+  access_key_id: mUVmcxXzh8AMfYTWW8vT
+  secret_access_key: v-4donUqsulqJkz7EQ6FVw9xBS0KT2bHoRnvzWlP
+
+development:
+  <<: *default
+  bucket: beatlib-dev
+
+production:
+  <<: *default
+  bucket: beatlib

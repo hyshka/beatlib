@@ -26,7 +26,9 @@ class User < ActiveRecord::Base
   validates :terms_of_service, acceptance: true
 
   # paperclip
-  has_attached_file :avatar, styles: { medium: "150x150#", thumb: "70x70#" }, default_url: ->(attachment) { ':attachment/missing_:style.png' }
+  has_attached_file :avatar, styles: { medium: "150x150#", thumb: "70x70#" },
+                             default_url: ->(attachment) { ':attachment/missing_:style.png' }
+                             #s3_credentials: "#{Rails.root.join('config', 's3.yml')}"
   validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
   validates_attachment_size :avatar, :in => 0..200.kilobytes
 

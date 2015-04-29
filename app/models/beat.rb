@@ -12,10 +12,12 @@ class Beat < ActiveRecord::Base
   validates :tag_list, presence: true
 
   # paperclip
-  has_attached_file :midi, :styles => { :mp3 => { :format => :mp3 } }, :processors => [:timidity]
-  validates_attachment :midi, :presence => true,
-  :content_type => { :content_type => "audio/midi" },
-  :size => { :in => 0..10.kilobytes }
+  has_attached_file :midi, styles: { mp3: { format: :mp3 } },
+                           processors: [:timidity]
+                           #s3_credentials: "#{Rails.root.join('config', 's3.yml')}"
+  validates_attachment_presence :midi
+  validates_attachment_content_type :midi, :content_type => ["audio/midi"]
+  validates_attachment_size :midi, :in => 0..10.kilobytes
 
   # acts as taggable on
   ## save order of tags

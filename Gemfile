@@ -67,6 +67,10 @@ gem 'susy'
 gem 'font-awesome-sass'
 ## Yaml db for db migrations
 #gem 'yaml_db'
+## AWS SDK for S3 storage
+#gem 'aws-sdk'
+# paperclip doesn't support aws-sdk v2+ yet
+gem 'aws-sdk', '< 2.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

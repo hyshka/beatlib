@@ -23,11 +23,6 @@ class User < ActiveRecord::Base
   #validates :email, presence: true,
   #                  length: { minimum: 3 },
   #                  uniqueness: true
-  ## password confirmation
-  #validates :password, confirmation: true,
-  #                     length: { minimum: 5 }
-  #validates :password_confirmation, presence: true,
-  #                     length: { minimum: 5 }
   validates :terms_of_service, acceptance: true
 
   # paperclip
@@ -41,7 +36,7 @@ class User < ActiveRecord::Base
 
   private
 
-  def create_permalink
-    self.permalink = name.downcase
-  end
+    def create_permalink
+      self.permalink = name.downcase
+    end
 end

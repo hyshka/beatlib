@@ -28,6 +28,7 @@ development:
   <<: *default
   host: localhost
   username: hyshka
+  password: N00bz0r3
   database: beatlib-dev
 
 # Warning: The database defined as "test" will be erased and

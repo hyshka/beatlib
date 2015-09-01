@@ -8,7 +8,7 @@ gem 'rails_12factor', group: :production
 gem 'puma'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.2'
+gem 'rails', '4.2.4'
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3'
 # Use postgres instead
@@ -16,7 +16,7 @@ gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0.3'
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 2.7.1'
+gem 'uglifier', '>= 2.7.2'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -27,7 +27,7 @@ gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.3.0'
+gem 'jbuilder', '~> 2.3.1'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.1', group: :doc
 
@@ -44,7 +44,7 @@ gem 'sdoc', '~> 0.4.1', group: :doc
 ## Devise for user authentication
 gem "devise"
 ## Paperclip for file uploads
-gem "paperclip", "~> 4.2"
+gem "paperclip", "~> 4.3"
 ## Will Paginate for pagination
 gem 'will_paginate', '~> 3.0.6'
 ## Ransack for searching
@@ -54,7 +54,7 @@ gem 'acts-as-taggable-on', '~> 3.4'
 ## Local Time for localised time
 gem 'local_time'
 ## High Voltage for easy static pages
-gem 'high_voltage', '~> 2.3.0'
+gem 'high_voltage', '~> 2.4.0'
 ## Select2 for tagging interface
 #gem 'select2-rails'
 ## Jquery Ui for drag and drop sorting
@@ -66,7 +66,7 @@ gem 'susy'
 ## font awesome for icons
 gem 'font-awesome-sass'
 ## Yaml db for db migrations
-#gem 'yaml_db'
+gem 'yaml_db'
 ## AWS SDK for S3 storage
 #gem 'aws-sdk'
 # paperclip doesn't support aws-sdk v2+ yet

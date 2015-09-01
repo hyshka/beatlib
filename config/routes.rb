@@ -37,12 +37,12 @@ Rails.application.routes.draw do
   get "latest", to: "beats#index", defaults: { sort: 'latest' }
 
   # You can have the root of your site routed with "root"
-  root 'beats#index'
+  #root 'beats#index'
 
   # bump static pages up the priority stack
   #get '*id', to: 'high_voltage/pages#show', as: 'my_page', format: false
   get 'terms-of-service' => 'high_voltage/pages#show', id: 'terms-of-service'
-
+  
   # lowest priority
   get "/:permalink", to: "users#show", as: "permalink_user"
 

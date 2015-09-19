@@ -159,3 +159,18 @@ http://www.youtube.com/watch?v=hwdVpKiJzac
     //@include css-gradient( darken(white, 6%), darken(white, 6%) );
   } // end active
 }
+
+.cta-btn {
+  @extend %btn; // here we load the btn defaults
+  @include css-gradient( darken(white, 0%), darken(white, 5%) );
+  width: auto;
+
+  &:hover,
+  &:focus {
+    background-color: lighten(black, 9%);
+  } // end hover
+
+  &:active {
+    background-color: lighten(black, 6%);
+  } // end active
+} // end black button

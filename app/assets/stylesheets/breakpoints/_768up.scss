@@ -63,7 +63,16 @@ HEADER STYLES
 .header {}
 
 #logo {
-  @include span(3);
+    @include span(3);
+    @include leader(1.5, 18px);
+    
+    a {
+        @include apply-side-rhythm-border(bottom, 0px, .75, 18px);
+        
+        &:hover, &:focus {
+            text-decoration: underline;
+        }
+    }
 }
 
 #nav-main {

@@ -1,12 +1,14 @@
 <nav id="nav-main" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
     <ul class="nav">
-        <li><%=  link_to 'Beats', beats_path %></li>
-        <li><%=  link_to 'Terms', terms_of_service_path %></li>
       <% if user_signed_in? %>
-        <li><%= link_to 'Upload', upload_path, title: "Upload a new beat" %></li>
+        <li><%=  link_to 'Beats', beats_path %></li>
+        <li><%= link_to 'Upload', new_beat_path, title: "Upload a new beat" %></li>
         <li><%= link_to 'Profile', permalink_user_path(current_user.permalink), title: "View Profile" %></li>
+        <li><%=  link_to 'Terms', terms_of_service_path %></li>
         <li><%= link_to 'Logout', logout_path, title: "Logout" %></li>
       <% else %>
+        <li><%=  link_to 'Beats', beats_path %></li>
+        <li><%=  link_to 'Terms', terms_of_service_path %></li>
         <li><%= link_to 'Login',  login_path, title: "Login" %></li>
       <% end %>
     </ul>

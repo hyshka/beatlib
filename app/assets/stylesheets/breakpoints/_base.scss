@@ -130,6 +130,14 @@ HEADER STYLES
 }
 
 #logo {
+  margin: 0;
+  
+    a {
+      display: block;
+      text-decoration: none;
+      @include rhythm-borders(0px, .75, 14px);
+      @include apply-side-rhythm-border(bottom, 1px, .75, 14px);
+    }
 }
 
 #main-nav {
@@ -365,42 +373,42 @@ p, ul, ol {
     @include adjust-font-size-to(12px, 1);
 }
 
-		/* content */
-		#entry-content {
+/* content */
+.entry-content {
 
-			ul, ol {
-				@include apply-side-rhythm-border(left, 0px, 1, 14px);
-				margin-left:1em;
+    ul, ol {
+        @include apply-side-rhythm-border(left, 0px, 1, 14px);
+        margin-left:1em;
 
-				li {
-					text-indent:-1em;
-				}
+        li {
+            text-indent:-1em;
+        }
 
-				ol,ul {
-					@include apply-side-rhythm-border(left, 0px, 2, 14px);
-					margin: 0;
-				}
+        ol,ul {
+            @include apply-side-rhythm-border(left, 0px, 2, 14px);
+            margin: 0;
+        }
 
-			}
+    }
 
-			ul {
-				list-style: disc inside none;
-			}
+    ul {
+        list-style: disc inside none;
+    }
 
-			ol {
-				list-style: decimal inside none;
+    ol {
+        list-style: decimal inside none;
 
-				ol {
-					list-style: upper-alpha inside;
+        ol {
+            list-style: upper-alpha inside;
 
-					ol {
-						list-style: lower-roman inside;
-					}
-				}
+            ol {
+                list-style: lower-roman inside;
+            }
+        }
 
-			}
+    }
 
-		} /* end .entry-content */
+} /* end .entry-content */
 
 img {
   //@include trailer(1, 14px);

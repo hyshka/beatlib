@@ -17,7 +17,8 @@ Rails.application.routes.draw do
     get "reconfirm", to: "devise/confirmations#new"
     post "confirmation", to: "devise/confirmations#create"
     get "confirmation", to: "devise/confirmations#show"
-    get "/:permalink/edit", to: "devise/registrations#edit", as: "permalink_edit_user"
+    get "/users/:permalink/edit", to: "devise/registrations#edit", as: "permalink_edit_user"
+    get "/users/:permalink", to: "users#show", as: "permalink_user"
   end
 
   # users
@@ -28,13 +29,15 @@ Rails.application.routes.draw do
   # beats
   resources :beats do #, :concerns => :paginatable do
     resources :comments
-    #post 'sort', on: :collection
+
     get "download", on: :member
-    get "tags", on: :collection
+    
+    collection do
+      get "tags"
+      get "popular", to: "beats#index", defaults: { sort: 'popular' }
+      get "latest", to: "beats#index", defaults: { sort: 'latest' }
+    end
   end
-  get "upload", to: "beats#new"
-  get "popular", to: "beats#index", defaults: { sort: 'popular' }
-  get "latest", to: "beats#index", defaults: { sort: 'latest' }
 
   # You can have the root of your site routed with "root"
   #root 'beats#index'
@@ -42,9 +45,11 @@ Rails.application.routes.draw do
   # bump static pages up the priority stack
   #get '*id', to: 'high_voltage/pages#show', as: 'my_page', format: false
   get 'terms-of-service' => 'high_voltage/pages#show', id: 'terms-of-service'
+  get 'contributing-beats' => 'high_voltage/pages#show', id: 'contributing-beats'
+  get 'creating-music' => 'high_voltage/pages#show', id: 'creating-music'
   
   # lowest priority
-  get "/:permalink", to: "users#show", as: "permalink_user"
+  #get "/:permalink", to: "users#show", as: "permalink_user"
 
   # In this case, you can use a singular resource to map /profile (rather than /profile/:id) to the show action
   # get 'profile', to: 'users#show'

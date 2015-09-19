@@ -2,8 +2,8 @@
 
 <nav id="nav-beats" class="cf">
   <ul>
-    <li><%= link_to "Popular", popular_path, remote: true, class: "sort-popular nav-beats-btn", title: "Sort beats by downloads" %></li>
-    <li><%= link_to "Latest", latest_path, remote: true, class: "sort-latest nav-beats-btn", title: "Sort beats by age" %></li>
+    <li><%= link_to "Popular", popular_beats_path, remote: true, class: "sort-popular nav-beats-btn", title: "Sort beats by downloads" %></li>
+    <li><%= link_to "Latest", latest_beats_path, remote: true, class: "sort-latest nav-beats-btn", title: "Sort beats by age" %></li>
     <li id="nav-tags">
       <%= render partial: 'nav_tags', locals: { selected_tag: @selected_tag } %>
     </li>

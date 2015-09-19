@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Declare ruby version for Heroku
-ruby '2.2.2'
+ruby '2.2.3'
 # Include for Heroku injection
 gem 'rails_12factor', group: :production
 # Puma for Heroku
@@ -60,7 +60,8 @@ gem 'high_voltage', '~> 2.4.0'
 ## Jquery Ui for drag and drop sorting
 gem 'jquery-ui-rails'
 ## Compass for mixins, user master branch
-gem 'compass-rails', github: "Compass/compass-rails", branch: "master"
+#gem 'compass-rails', github: "Compass/compass-rails", branch: "master"
+gem 'compass-rails'
 ## Susy for grid
 gem 'susy'
 ## font awesome for icons
@@ -71,6 +72,8 @@ gem 'yaml_db'
 #gem 'aws-sdk'
 # paperclip doesn't support aws-sdk v2+ yet
 gem 'aws-sdk', '< 2.0'
+# markdown support
+gem 'rdiscount'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

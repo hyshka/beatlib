@@ -27,7 +27,7 @@ default: &default
 development:
   <<: *default
   host: localhost
-  username: hyshka
+  username: postgres
   password: N00bz0r3
   database: beatlib-dev
 

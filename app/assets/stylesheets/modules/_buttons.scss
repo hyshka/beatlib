@@ -30,19 +30,13 @@ http://www.youtube.com/watch?v=hwdVpKiJzac
   font-family: $sans-serif;
   text-decoration: none;
   color: $black;
-  @include adjust-font-size-to(14px);
   font-weight: normal;
-  @include trailer(0, 14px);
-  //height: auto;
-  @include rhythm-borders(1px, 0, 14px);
-  @include apply-side-rhythm-border(left, 1px, .5, 14px);
-  @include apply-side-rhythm-border(right, 1px, .5, 14px);
-  border-radius: 6px;
-  border-color: lighten( $black, 54% );
+  padding: .375em .75em;
+  border: 1px solid lighten( $black, 54% );
+  border-radius: 4px;
   box-shadow:inset 0px 1px 0px 0px white;
   text-shadow:1px 1px 0px white;
   width: 100%;
-  text-align: center;
   cursor: pointer;
   @include transition(all 0.14s ease-in-out);
 
@@ -62,7 +56,7 @@ http://www.youtube.com/watch?v=hwdVpKiJzac
 .btn {
   @extend %btn; // here we load the btn defaults
   background-color: lighten(black, 12%);
-
+  
   &:hover,
   &:focus {
     background-color: lighten(black, 9%);
@@ -76,9 +70,8 @@ http://www.youtube.com/watch?v=hwdVpKiJzac
 .nav-beats-btn, .nav-tags-btn, #search .nav-search-btn {
   @extend %btn; // here we load the btn defaults
   @include css-gradient( darken(white, 0%), darken(white, 5%) );
-  @include rhythm-borders(1px, .125, 14px);
-  @include apply-side-rhythm-border(left, 1px, .5, 14px);
-  @include apply-side-rhythm-border(right, 1px, .5, 14px);
+  padding: .25em .5em;
+  color: $black !important;
   
   &:hover,
   &:focus {
@@ -93,7 +86,8 @@ http://www.youtube.com/watch?v=hwdVpKiJzac
 .play-pause-btn {
   @extend %btn; // here we load the btn defaults
   background-color: lighten(black, 24%);
-  @include rhythm-borders(0px, 0, 16px);
+  border: 0;
+  padding: 0;
   color: $white;
   box-shadow:inset 0px 1px 0px 0px black;
   text-shadow:1px 1px 0px black;
@@ -113,7 +107,8 @@ http://www.youtube.com/watch?v=hwdVpKiJzac
   @extend %btn; // here we load the btn defaults
   background-color: darken(white, 24%);
   color: $black;
-  @include rhythm-borders(0px, 0, 16px);
+  border: 0;
+  padding: 0;
   
   &:hover,
   &:focus {
@@ -130,6 +125,7 @@ http://www.youtube.com/watch?v=hwdVpKiJzac
   @extend %btn; // here we load the btn defaults
   @include css-gradient( darken(white, 0%), darken(white, 5%) );
   width: auto;
+  padding: .25em .5em;
   
   &:hover,
   &:focus {
@@ -145,10 +141,8 @@ http://www.youtube.com/watch?v=hwdVpKiJzac
   @extend %btn; // here we load the btn defaults
   @include css-gradient( darken(white, 0%), darken(white, 5%) );
   width: auto;
-  @include adjust-font-size-to(12px, 1);
-  //@include rhythm-borders(1px, 0, 12px);
-  @include apply-side-rhythm-border(left, 1px, .5, 12px);
-  @include apply-side-rhythm-border(right, 1px, .5, 12px);
+  font-size: .75em;
+  padding: .25em .5em;
   
   &:hover,
   &:focus {
@@ -162,15 +156,26 @@ http://www.youtube.com/watch?v=hwdVpKiJzac
 
 .cta-btn {
   @extend %btn; // here we load the btn defaults
-  @include css-gradient( darken(white, 0%), darken(white, 5%) );
+  @include css-gradient( $blue, darken($blue, 5%) );
   width: auto;
-
+  color: white !important;
+  
+  border: 2px solid;
+  border-top-color: lighten($blue, 3%);
+  border-left-color: lighten($blue, 3%);
+  border-bottom-color: darken($blue, 3%);
+  border-right-color: darken($blue, 3%);
+  
+  text-shadow: 1px 1px 2px darken($blue, 9%);
+  box-shadow: none;
+  
   &:hover,
   &:focus {
-    background-color: lighten(black, 9%);
+    @include css-gradient( darken($blue, 5%), darken($blue, 5%) );
+    color: white !important;
   } // end hover
 
   &:active {
-    background-color: lighten(black, 6%);
+    @include css-gradient( darken($blue, 5%), darken($blue, 5%) );
   } // end active
 } // end black button

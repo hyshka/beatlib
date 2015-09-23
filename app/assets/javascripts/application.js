@@ -12,9 +12,13 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require foundation
 //= require jquery.fileDownload
 //= require jquery-ui/sortable
 //= require turbolinks
 //= require local_time
 //= require selectize
+//= require responsive-tables
 //= require_tree .
+
+$(function(){ $(document).foundation(); });

@@ -49,6 +49,7 @@ GEM
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
     byebug (6.0.2)
+    cancancan (1.12.0)
     chunky_png (1.3.4)
     climate_control (0.0.3)
       activesupport (>= 3.0)
@@ -88,10 +89,21 @@ GEM
     erubis (2.7.0)
     execjs (2.6.0)
     ffi (1.9.10)
+    font-awesome-rails (4.4.0.0)
+      railties (>= 3.2, < 5.0)
     font-awesome-sass (4.4.0)
       sass (>= 3.2)
+    foundation-rails (5.5.2.1)
+      railties (>= 3.1.0)
+      sass (>= 3.3.0, < 3.5)
+    foundation_form_builder (1.1.0)
+      actionview (>= 4.2.0)
+      activerecord (>= 4.2.0)
+      activesupport (>= 4.2.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    haml (4.0.7)
+      tilt
     high_voltage (2.4.0)
     hike (1.2.3)
     i18n (0.7.0)
@@ -105,6 +117,9 @@ GEM
     jquery-ui-rails (5.0.5)
       railties (>= 3.2.16)
     json (1.8.3)
+    kaminari (0.16.3)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     local_time (1.0.3)
       coffee-rails
     loofah (2.0.3)
@@ -116,6 +131,7 @@ GEM
     mini_portile (0.6.2)
     minitest (5.8.0)
     multi_json (1.11.2)
+    nested_form (0.3.2)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
     orm_adapter (0.5.0)
@@ -130,6 +146,9 @@ GEM
       activerecord (>= 3.0)
     puma (2.14.0)
     rack (1.6.4)
+    rack-pjax (0.8.0)
+      nokogiri (~> 1.5)
+      rack (~> 1.1)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.4)
@@ -154,6 +173,20 @@ GEM
     rails_12factor (0.0.3)
       rails_serve_static_assets
       rails_stdout_logging
+    rails_admin (0.7.0)
+      builder (~> 3.1)
+      coffee-rails (~> 4.0)
+      font-awesome-rails (>= 3.0, < 5)
+      haml (~> 4.0)
+      jquery-rails (>= 3.0, < 5)
+      jquery-ui-rails (~> 5.0)
+      kaminari (~> 0.14)
+      nested_form (~> 0.3)
+      rack-pjax (~> 0.7)
+      rails (~> 4.0)
+      remotipart (~> 1.0)
+      safe_yaml (~> 1.0)
+      sass-rails (>= 4.0, < 6)
     rails_serve_static_assets (0.0.4)
     rails_stdout_logging (0.0.4)
     railties (4.2.4)
@@ -171,10 +204,11 @@ GEM
     rb-fsevent (0.9.6)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
-    rdiscount (2.1.8)
     rdoc (4.2.0)
+    remotipart (1.2.1)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
+    safe_yaml (1.0.4)
     sass (3.4.18)
     sass-rails (5.0.4)
       railties (>= 4.0.0, < 5.0)
@@ -214,7 +248,6 @@ GEM
       binding_of_caller (>= 0.7.2)
       railties (>= 4.0)
       sprockets-rails (>= 2.0, < 4.0)
-    will_paginate (3.0.7)
     yaml_db (0.3.0)
       rails (>= 3.0, < 4.3)
       rake (>= 0.8.7)
@@ -226,22 +259,26 @@ DEPENDENCIES
   acts-as-taggable-on (~> 3.4)
   aws-sdk (< 2.0)
   byebug
+  cancancan
   coffee-rails (~> 4.1.0)
   compass-rails
   devise
   font-awesome-sass
+  foundation-rails
+  foundation_form_builder
   high_voltage (~> 2.4.0)
   jbuilder (~> 2.3.1)
   jquery-rails
   jquery-ui-rails
+  kaminari
   local_time
   paperclip (~> 4.3)
   pg
   puma
   rails (= 4.2.4)
   rails_12factor
+  rails_admin
   ransack
-  rdiscount
   sass-rails (~> 5.0.3)
   sdoc (~> 0.4.1)
   spring
@@ -249,7 +286,6 @@ DEPENDENCIES
   turbolinks
   uglifier (>= 2.7.2)
   web-console (~> 2.0)
-  will_paginate (~> 3.0.6)
   yaml_db
 
 BUNDLED WITH

@@ -1,33 +1,24 @@
-<article class="beat beat-index cf" data-dom-id="<%= dom_id(beat) %>">
-  <header class="cf">
-    <section class="audio">
-      <audio id="<%= dom_id(beat) %>" src="<%= beat.midi.url(:mp3) %>" loop="1">
-        Your browser does not support the <code>audio</code> element
-      </audio>
-
-      <button type="button" class="play-pause-btn" data-dom-id="<%= dom_id(beat) %>" title="Play/Pause <%= beat.title %>"><span class="fa fa-play"></span></button>
-    </section>
-    
-    <div class="">
-      <h2 class="beat-title h3"><%= link_to beat.title, beat_path(beat), title: "View beat" %></h2>
-      <p class="user byline">By&nbsp;<%= link_to User.find(beat.user_id).name, user_path(beat.user_id), title: "View #{User.find(beat.user_id).name}'s profile" %></p>
-      <p class="byline">Created on <%= local_time(beat.created_at) %></p>
-    </div>
-  </header>
+<div class="beat small-12 medium-6 large-4 columns" data-dom-id="<%= dom_id(beat) %>">
   
-  <footer>
-    <p class="meta">
-      <%= link_to beats_path(tag: beat.tags.first.to_s), method: :get, remote: true, title: "View all beats tagged with #{beat.tags.first.to_s.titleize}", class: "meta-btn tag sort-tag" do %>
-        <span class="fa fa-tag"></span>&nbsp;<%= beat.tags.first.to_s.titleize %>
-      <% end %>
-      <span class="download">
-        <%= render partial: "meta_download", locals: {beat: beat} %>
-      </span>
-      <span class="favorite">
-        <%= render partial: "meta_favorite", locals: {beat: beat} %>
-      </span>
-      <%= link_to beat_path(beat, anchor: 'comments'), class: "meta-btn", title: "View comments" do %>
-      <span class="fa fa-comment"></span>&nbsp;<%= beat.comments.size %><% end %>
-    </p>
-  </footer>
-</article>
+  <div class="clearfix">
+    <audio id="<%= dom_id(beat) %>" src="<%= beat.midi.url(:mp3) %>" loop="1">
+      Your browser does not support the <code>audio</code> element
+    </audio>
+
+    <button type="button"  class="play-pause-btn button left" data-dom-id="<%= dom_id(beat) %>" title="Play/Pause <%= beat.title %>"><span class="fa fa-play"></span></button>
+
+    <p><%= link_to beat.title, beat_path(beat), title: "View beat" %></p>
+    <p><%= link_to User.find(beat.user_id).name, user_path(User.find(beat.user_id).name), title: "View #{User.find(beat.user_id).name}'s profile" %></p>
+
+    <!--<small><%= time_ago_in_words(beat.created_at) %> ago</small>-->
+    
+  </div>
+  
+  <ul class="button-group radius">
+    <li class="download"><%= render partial: "meta_download", locals: {beat: beat} %></li>
+    <li class="favorite"><%= render partial: "meta_favorite", locals: {beat: beat} %></li>
+    <li><%= link_to beat_path(beat, anchor: 'comments'), class: "meta-btn button secondary tiny", title: "View comments" do %><span class="fa fa-comment"></span>&nbsp;<%= beat.comments.size %><% end %></li>
+    <li><%= link_to beats_path(tag: beat.tags.first.to_s), method: :get, remote: true, title: "View all beats tagged with #{beat.tags.first.to_s.titleize}", class: "meta-btn tag sort-tag button secondary tiny" do %><span class="fa fa-tag"></span>&nbsp;<%= beat.tags.first.to_s.titleize %><% end %></li>
+  </ul>
+      
+</div>

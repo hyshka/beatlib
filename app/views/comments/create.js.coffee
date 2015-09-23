@@ -1,4 +1,4 @@
-$("#comment-list").html("<%= escape_javascript( render @beat.comments ) %>");
+$("#comment-list").html("<%= escape_javascript( render @beat.comments.reverse ) %>");
 
 $('.new_comment')[0].reset();
 

@@ -9,12 +9,9 @@ Stylesheet: 481px and Up Stylesheet
 GENERAL STYLES
 *********************/
 
-$base-font-size: 16px !global;
-$base-line-height: 12px !global;
-@include establish-baseline;
-
-html {
-  @include adjust-leading-to(2);
+body {
+    //18px, 1.125
+    font-size: 112.5%;
 }
 
 #nav-beats {

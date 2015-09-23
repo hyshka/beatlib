@@ -1,21 +1,16 @@
-<article class="comment">
+<div class="comment clearfix">
+  <% commenter = User.find_by_id(comment.user_id) %>
   
-  <header class="cf">
-    <%= link_to user_path(User.find(comment.user_id)), title: "View #{User.find(comment.user_id).name}'s profile", class: "avatar" do %>
-      <%= image_tag User.find(comment.user_id).avatar.url(:thumb) if User.find(comment.user_id).avatar.url(:thumb) %>
-    <% end %>
-    <div class="comment-meta">
-      <p class="user"><%= User.find(comment.user_id).name%></p>
-      <p class="byline">Created on <%= local_time(comment.created_at) %></p>
-    </div>
-  </header>
+  <%= link_to user_path(commenter), title: "View #{commenter.name}'s profile", class: "avatar left" do %>
+    <%= image_tag commenter.avatar.url(:thumb) if commenter.avatar.url(:thumb) %>
+  <% end %>
+    
+  <p><%= commenter.name %> said <%= time_ago_in_words(comment.created_at) %> ago</p>
 
-  <section>
-    <%= comment.body %>
-  </section>
+  <p><%= comment.body %></p>
 
   <% if user_signed_in? && comment.user_id.to_s == current_user.id.to_s %>
-    <footer>
+    <div>
         <%= link_to [comment.beat, comment],
             method: :delete,
             remote: true,
@@ -23,6 +18,6 @@
             data: { confirm: 'Are you sure?' } do %>
             Delete Comment
         <% end %>
-    </footer>
+    </div>
   <% end %>
-</article>
+</div>

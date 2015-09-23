@@ -1,7 +1,8 @@
 $("#nav-tags").html("<%= j( render partial: 'nav_tags', locals: { selected_tag: @selected_tag } ) %>");
 $("#beats").html("<%= j( render @sorted_beats, locals: { sorted_beats: @sorted_beats } ) %>");
-$("#pagination").html("<%= j( will_paginate @sorted_beats ) %>");
-$.getScript("<%= j( asset_url( 'nav_tags.coffee' ) ) %>")
+$("#pagination").html("<%= j( paginate( @sorted_beats, remote: false ).to_s ) %>");
+
+#$.getScript("<%= j( asset_url( 'nav_tags.coffee' ) ) %>")
 
 # infinite scrolling
 #$('#beats').append('<%= j render @sorted_beats %>');

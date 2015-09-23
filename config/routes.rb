@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -22,20 +23,25 @@ Rails.application.routes.draw do
   end
 
   # users
-  resources :users do
-    resources :favorites
+  resources :users, only: [:show, :new, :edit, :create, :update, :destroy] do
+    resources :favorites, only: [:create, :destroy]
+  end
+  
+  # pagination, pretty urls
+  concern :paginatable do
+    get '(page/:page)', action: :index, on: :collection, as: ''
   end
 
   # beats
-  resources :beats do #, :concerns => :paginatable do
-    resources :comments
+  resources :beats, concerns: :paginatable do #, :concerns => :paginatable do
+    resources :comments, only: [:create, :destroy]
 
     get "download", on: :member
     
     collection do
-      get "tags"
-      get "popular", to: "beats#index", defaults: { sort: 'popular' }
-      get "latest", to: "beats#index", defaults: { sort: 'latest' }
+      #get "tags"
+      #get "popular", to: "beats#index", defaults: { sort: 'popular' }
+      #get "latest", to: "beats#index", defaults: { sort: 'latest' }
     end
   end
 
@@ -45,6 +51,7 @@ Rails.application.routes.draw do
   # bump static pages up the priority stack
   #get '*id', to: 'high_voltage/pages#show', as: 'my_page', format: false
   get 'terms-of-service' => 'high_voltage/pages#show', id: 'terms-of-service'
+  get 'get-started' => 'high_voltage/pages#show', id: 'get-started'
   get 'contributing-beats' => 'high_voltage/pages#show', id: 'contributing-beats'
   get 'creating-music' => 'high_voltage/pages#show', id: 'creating-music'
   

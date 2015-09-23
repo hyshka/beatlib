@@ -1,5 +1,15 @@
-<h1>Editing beat</h1>
+<div class="small-12 columns">
+
+  <h1>Editing beat</h1>
+  
+  <%= form_for @beat do |f| %>
+
+    <%= render partial: 'form', locals: {f: f} %>
+
+    <p>
+      <%= f.submit "Save Beat", class: "button radius" %>
+    </p>
+  
+  <% end %>
  
-<%= render 'form' %>
- 
-<%= link_to 'Back', beats_path %>
+</div>

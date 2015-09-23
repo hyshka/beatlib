@@ -1,12 +1,12 @@
 <% if user_signed_in? %>
   <% if current_user.favorites.exists?(beat_id: beat.id) %>
-    <%= link_to user_path(current_user.id), class: "meta-btn", title: "View Favorites" do %>
+    <%= link_to user_path(current_user.id), class: "meta-btn button secondary tiny", title: "View Favorites" do %>
     <span class="fa fa-heart"></span>&nbsp;<%= @favorites.where(beat_id: beat.id).size %><% end %>
   <% else %>
-    <%= link_to user_favorites_path(user_id: current_user, beat_id: beat.id), method: :post, remote: true, class: "meta-btn", title: "Add to Favorites" do %>
+    <%= link_to user_favorites_path(user_id: current_user, beat_id: beat.id), method: :post, remote: true, class: "meta-btn button secondary tiny", title: "Add to Favorites" do %>
     <span class="fa fa-heart"></span>&nbsp;<%= @favorites.where(beat_id: beat.id).size %><% end %>
   <% end %>
 <% else %>
-  <%= link_to new_user_session_path, class: "meta-btn", title: "Login to Favorite" do %>
+  <%= link_to new_user_session_path, class: "meta-btn button secondary tiny", title: "Login to Favorite" do %>
   <span class="fa fa-heart"></span>&nbsp;<%= @favorites.where(beat_id: beat.id).size %><% end %>
 <% end %>

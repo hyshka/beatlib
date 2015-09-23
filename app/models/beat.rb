@@ -24,6 +24,9 @@ class Beat < ActiveRecord::Base
   acts_as_ordered_taggable
   ## convert array from multiple select to string
   serialize :tag_list
+  
+  # pagination
+  paginates_per 12
 
   private
 

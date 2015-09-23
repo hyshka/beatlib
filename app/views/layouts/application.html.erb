@@ -1,58 +1,59 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <%= 
-    # force Internet Explorer to use the latest rendering engine available 
-  %>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  
-  <title>BeatLib</title>
-  
-  <%= 
-    # mobile meta
-  %>
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  
-  <%= 
-    # scripts and styles
-  %>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-  
-</head>
-<body itemscope itemtype="http://schema.org/WebPage">
-
-  <div id="container">
-  
-    <header class="header cf" role="banner" itemscope itemtype="http://schema.org/WPHeader">
-      <p id="logo" class="" itemscope itemtype="http://schema.org/Organization"><%= link_to 'BeatLib', root_path %></h1>
-
-      <%= render 'layouts/navigation' %>
-    </header>
-
-    <div id="content">
-      <div id="messages">
-        <%= 
-          # render 'layouts/messages' 
-        %>
-      </div>
-      
-      <%= yield %>
-    </div>
-
-    <!--
-    <footer class="footer" role="contentinfo" itemscope itemtype="http://schema.org/WPFooter">
-      <ul>
-        <li><%=  link_to 'Terms of Use', page_path('terms-of-use') %></li>
-      </ul>
-    </footer>
-    -->
+    <title><%= content_for?(:title) ? yield(:title) : "BeatLib" %></title>
     
-  </div>
-</body>
+    <%= favicon_link_tag 'favicon.png', rel: 'icon', type: 'image/png' %>
+    <!--[if IE]>
+      <%= favicon_link_tag 'favicon.ico', rel: 'shortcut icon', type: 'image/x-icon' %>
+    <![endif]-->
+    
+    <script src="https://use.typekit.net/ewa1mre.js"></script>
+    <script>try{Typekit.load({ async: true });}catch(e){}</script>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    
+    <div id="container">
+  
+      <header class="header">
+        <%= render 'layouts/navigation' %>
+      </header>
+
+      <div id="content" class="row">
+
+        <%= yield %>
+
+      </div>
+
+      <footer class="footer row">
+
+        <div class="small-12 columns">
+
+          <h3>Under Development</h3>
+
+          <p>This website is beta software, expect bugs and possible downtime or loss of data. If you're interested in helping me test and develop BeatLib, or have feedback, please contact me at <a href="mailto:bryan@hyshka.com">bryan@hyshka.com</a>.</p>
+
+          <hr />
+          
+          <ul class="inline-list"  role="navigation" title="Footer Menu">
+            <li><%= link_to 'Get Started', get_started_path %></li>
+            <li><%= link_to 'Terms', terms_of_service_path %></li>
+            <% if can? :manage, :all %>
+            <li><%= link_to 'Admin', rails_admin_path %></li>
+            <% end %>
+          </ul>
+          
+        </div>
+      </footer>
+    </div>
+  </body>
 </html>

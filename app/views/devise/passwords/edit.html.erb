@@ -1,22 +1,19 @@
+<div class="small-12 columns">
+
 <h1>Change your password</h1>
 
 <%= form_for(resource, as: resource_name, url: password_path, html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
   <%= f.hidden_field :reset_password_token %>
 
-  <p>
-    <%= f.label :password, "New password" %><br />
-    <%= f.password_field :password, autofocus: true, autocomplete: "off" %>
-  </p>
+  <%= f.input_div :password, label: "New Password", field: { autofocus: true, autocomplete: "off" } %>
 
-  <p>
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </p>
+  <%= f.input_div :password_confirmation, label: "Confirm new password", field: { autocomplete: "off" } %>
 
-  <p>
-    <%= f.submit "Change my password" %>
-  </p>
+  <%= f.submit "Change my password", class: "button radius" %>
+
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+</div>

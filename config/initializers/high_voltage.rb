@@ -1,5 +1,5 @@
 HighVoltage.configure do |config|
-  config.home_page = 'home'
+  config.home_page = 'get-started'
   config.route_drawer = HighVoltage::RouteDrawers::Root
-  config.layout = 'pages'
+  #config.layout = 'pages'
 end

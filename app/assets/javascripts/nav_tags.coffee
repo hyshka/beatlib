@@ -1,5 +1,5 @@
 ## on page change for turbolinks
-$(document).on "page:update", ->
+###$(document).on "page:update", ->
   # tags menu toggle
   $('.nav-tags-btn').on 'click', (event) ->
     event.preventDefault()
@@ -15,4 +15,4 @@ $(document).on "page:update", ->
       #hide tags
       $('#tags').removeClass('active')
     else
-    return
+    return###

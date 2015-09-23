@@ -1,24 +1,34 @@
-<h1 class="page-title h2">Browse Beats</h1>
+<div class="small-12 columns">
 
-<nav id="nav-beats" class="cf">
-  <ul>
-    <li><%= link_to "Popular", popular_beats_path, remote: true, class: "sort-popular nav-beats-btn", title: "Sort beats by downloads" %></li>
-    <li><%= link_to "Latest", latest_beats_path, remote: true, class: "sort-latest nav-beats-btn", title: "Sort beats by age" %></li>
-    <li id="nav-tags">
-      <%= render partial: 'nav_tags', locals: { selected_tag: @selected_tag } %>
-    </li>
-    <li id="search">
-      <%= search_form_for @q, remote: true do |f| %>
-        <%= f.search_field :title_or_description_or_created_by_or_tags_name_cont, placeholder: "Search for...", class: "nav-search-btn" %>
-      <% end %>
-    </li>
-  </ul>
-</nav>
+  <h1 class="page-title">Browse</h1>
+  
+  <div class="button-bar">
+    <ul class="button-group radius beat-filter">
+      <li><%= link_to "Popular", beats_path(sort: 'popular'), remote: false, class: "button small secondary", title: "Sort beats by downloads" %></li>
+      <li><%= link_to "Latest", beats_path(sort: 'latest'), remote: false, class: "button small secondary", title: "Sort beats by age" %></li>
+      <li id="nav-tags"><%= render partial: 'nav_tags', locals: { selected_tag: @selected_tag } %></li>
+    </ul>
 
-<div id="beats" class="cf">
-  <%= render @sorted_beats %>
+    <%= search_form_for @q, remote: false, class: "beat-search button-group" do |f| %>
+      <%= f.search_field :title_or_description_or_created_by_or_tags_name_cont, placeholder: "Search for...", class: "radius" %>
+    <% end %>
+  </div>
+
+  <div id="beats" class="">
+    
+    <% @sorted_beats.in_groups_of(3).each do |group| %>
+      <div class="row">
+          <% group.each do |item| %>
+            <div class="item">
+              <%= render partial: 'beat', locals: { beat: item } if item %>
+            </div>
+          <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <div id="pagination" class="pagination-centered">
+    <%= paginate @sorted_beats, remote: false %>
+  </div>
+
 </div>
-
-<nav id="pagination">
-  <%= will_paginate @sorted_beats, previous_label: "<span class='fa fa-arrow-left'></span>", next_label: "<span class='fa fa-arrow-right'></span>", class: "pagination cf" %>
-</nav>

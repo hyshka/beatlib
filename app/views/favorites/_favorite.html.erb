@@ -1,16 +1,16 @@
-<li><h3 class="h4"><%= link_to Beat.find(favorite.beat_id).title, beat_path(Beat.find(favorite.beat_id)) %></h3>
-  <span class="fa fa-tag"></span>&nbsp;<%= Beat.find(favorite.beat_id).tags.first.to_s.titleize %> -
-  <span class="fa fa-download"></span>&nbsp;<%= Beat.find(favorite.beat_id).downloads %> -
-  <span class="fa fa-heart"></span>&nbsp;<%= Favorite.all.where(beat_id: favorite.beat_id).size %> -
-  <span class="fa fa-comment"></span>&nbsp;<%= Beat.find(favorite.beat_id).comments.size %>
-  
+<tr>
+  <td><%= link_to Beat.find(favorite.beat_id).title, beat_path(Beat.find(favorite.beat_id)) %></td>
+  <td><%= Beat.find(favorite.beat_id).tags.first.to_s.titleize %></td>
+  <td><%= Beat.find(favorite.beat_id).downloads %></td>
+  <td><%= Favorite.all.where(beat_id: favorite.beat_id).size %></td>
+  <td><%= Beat.find(favorite.beat_id).comments.size %></td>
   <% if user_signed_in? && favorite.user_id.to_s == current_user.id.to_s %>
-    - <%= link_to [favorite.user, favorite],
-              method: :delete,
-              remote: true,
-              class: 'delete-btn',
-              data: { confirm: 'Are you sure?' } do %>
-      <span class="fa fa-trash-o"></span>&nbsp;Delete
-      <% end %>
+    <td><%= link_to [favorite.user, favorite],
+            method: :delete,
+            remote: true,
+            class: 'delete-btn',
+            data: { confirm: 'Are you sure?' } do %>
+    <span class="fa fa-trash-o"></span>&nbsp;Delete
+    <% end %></td>
   <% end %>
-</li>
+</tr>

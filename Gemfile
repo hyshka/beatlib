@@ -46,7 +46,9 @@ gem "devise"
 ## Paperclip for file uploads
 gem "paperclip", "~> 4.3"
 ## Will Paginate for pagination
-gem 'will_paginate', '~> 3.0.6'
+#gem 'will_paginate', '~> 3.0.6'
+# migrate to kaminari for pagination
+gem 'kaminari'
 ## Ransack for searching
 gem 'ransack'
 ## Acts as Taggable On for tagging
@@ -73,7 +75,16 @@ gem 'yaml_db'
 # paperclip doesn't support aws-sdk v2+ yet
 gem 'aws-sdk', '< 2.0'
 # markdown support
-gem 'rdiscount'
+#gem 'rdiscount'
+
+# admin panels
+gem 'rails_admin'
+# authorization
+gem "cancancan"
+
+# css framework
+gem 'foundation-rails'
+gem 'foundation_form_builder'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

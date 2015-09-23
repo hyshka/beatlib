@@ -1,73 +1,52 @@
-<article class="beat beat-show cf">
-
-  <header class="">
-    <h1 class="beat-title h2"><%= @beat.title %></h1>
-
-    <div class="cf">
-      <div class="audio">
-        <audio id="<%= dom_id(@beat) %>" class="audio" src="<%= @beat.midi.url(:mp3) %>" loop="1">
-          Your browser does not support the <code>audio</code> element
-        </audio>
-
-        <button type="button" class="play-pause-btn" data-dom-id="<%= dom_id(@beat) %>" title="Play/Pause <%= @beat.title %>"><span class="fa fa-play"></span></button>
-      </div>
-
-      <%= link_to @beat.midi.url, class: "download-btn", title: "Download #{@beat.title}" do %><span class="fa fa-download"></span><% end %>
-
-      <p class="user-avatar"><%= link_to user_path(@beat.user_id), title: "View #{User.find(@beat.user_id).name}'s profile" do %>
-        <%= image_tag User.find(@beat.user_id).avatar.url(:thumb) if User.find(@beat.user_id).avatar.url(:thumb) %>
-      <% end %></p>
-    </div>
-  </header>
-  
-  <section>
-    <p class="meta">
-      <%= link_to beats_path(tag: @beat.tags.first.to_s), method: :get, remote: true, title: "View all beats tagged with #{@beat.tags.first.to_s.titleize}", class: "meta-btn tag sort-tag" do %>
-        <span class="fa fa-tag"></span>&nbsp;<%= @beat.tags.first.to_s.titleize %>
-      <% end %>
-      <span class="download">
-        <%= render partial: "meta_download", locals: {beat: @beat} %>
-      </span>
-      <span class="favorite">
-        <%= render partial: "meta_favorite", locals: {beat: @beat} %>
-      </span>
-      <%= link_to beat_path(@beat, anchor: 'comments'), class: "meta-btn", title: "View comments" do %>
-      <span class="fa fa-comment"></span>&nbsp;<%= @beat.comments.size %><% end %>
-    </p>
+<div class="small-12 columns">
     
-    <p><span class="fa fa-tags"></span> 
-      <%= @beat.tag_list %>
-    </p>
-    
-    <p>Description:
-      <%= @beat.description %>
-    </p>
-  </section>
-
-</article>
-
-<div id="comments">
-  <!--<h2 class="h3">Comments</h2>-->
-  <div id="comment-list">
-    <% if @beat.comments.size == 0 %>
-      <p>There aren't any comments yet.</p>
-    <% else %>
-      <%= render @beat.comments %>
-    <% end %>
+  <div class="clearfix">
+    <%= render partial: "beat", locals: {beat: @beat} %>
   </div>
-
+  
   <% if user_signed_in? %>
     <div id="comment-form">
       <%= render 'comments/form' %>
     </div>
   <% end %>
+  
+  <div class="row">
+    
+    <div class="medium-2 columns">
+    
+      <%= link_to user_path(User.find(@beat.user_id).permalink), title: "View #{User.find(@beat.user_id).name}'s profile" do %>
+      <%= image_tag User.find(@beat.user_id).avatar.url(:medium) if User.find(@beat.user_id).avatar.url(:medium) %>
+      <% end %>
+      
+      <% if user_signed_in? %>
+        <% if @beat.created_by = current_user.name %>
+          <ul class="side-nav" role="navigation" title="Manage Beat">
+            <li><%= link_to 'Edit', edit_beat_path(@beat) %></li>
+            <li><%= link_to 'Delete', beat_path(@beat),
+                    method: :delete,
+                    data: { confirm: 'Are you sure?' } %></li>
+          </ul>
+        <% end %>
+      <% end %>
+      
+    </div>
+    
+    <div class="medium-10 columns">
+      
+      <p><%= @beat.description %></p>
+      
+      <p><span class="fa fa-tags"></span> <%= @beat.tag_list %></p>
+      
+      <hr />
+      
+      <% if @comments.size == 0 %>
+        <p>There aren't any comments yet.</p>
+      <% else %>
+        <p><span class="fa fa-comment"></span>&nbsp;<%= @comments.size %> comments</p>
+        <div id="comment-list"><%= render @comments.reverse %></div>
+      <% end %>
+      
+    </div>
+    
+  </div>
 </div>
-
-<% if user_signed_in? %>
-  <% if @beat.created_by = current_user.name %>
-      <%= link_to 'Edit', edit_beat_path(@beat) %> |
-      <%= link_to 'Delete', beat_path(@beat),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %> |
-  <% end %>
-<% end %>

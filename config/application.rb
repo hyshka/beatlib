@@ -33,5 +33,8 @@ module BeatLib
 
     # paperclip storage settings
     config.paperclip_defaults = { storage: :s3, s3_credentials: "#{Rails.root.join('config', 's3.yml')}", path: ":attachment/:style/:id.:extension", s3_host_name: "objects.dreamhost.com", s3_protocol: "https" }
+  
+    # foundation form builder gem
+    config.action_view.default_form_builder = FoundationFormBuilder::Rails
   end
 end

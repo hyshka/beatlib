@@ -1,16 +1,24 @@
-<li><h3 class="h4"><%= link_to beat.title, beat_path(beat) %></h3>
-  <span class="fa fa-tag"></span>&nbsp;<%= beat.tags.first.to_s.titleize %> -
-  <span class="fa fa-download"></span>&nbsp;<%= beat.downloads %> -
-  <span class="fa fa-heart"></span>&nbsp;<%= Favorite.all.where(beat_id: beat.id).size %> -
-  <span class="fa fa-comment"></span>&nbsp;<%= beat.comments.size %>
+<tr>
+  <td><%= link_to beat.title, beat_path(beat) %></td>
+  <td>
+    <audio id="<%= dom_id(beat) %>" src="<%= beat.midi.url(:mp3) %>" loop="1">
+      Your browser does not support the <code>audio</code> element
+    </audio>
 
+    <button type="button" class="play-pause-btn button tiny secondary radius" data-dom-id="<%= dom_id(beat) %>" title="Play/Pause <%= beat.title %>"><span class="fa fa-play"></span></button></td>
+  <td><span class="download"><%= render partial: "beats/meta_download", locals: {beat: beat} %></span></td>
+  <td><%= beat.tags.first.to_s.titleize %></td>
+  <td><%= beat.downloads %></td>
+  <td><%= Favorite.all.where(beat_id: beat.id).size %></td>
+  <td><%= beat.comments.size %></td>
   <% if user_signed_in? && beat.user_id.to_s == current_user.id.to_s %>
-    - <%= link_to beat_path(beat),
-              method: :delete,
-              remote: true,
-              class: 'delete-btn',
-              data: { confirm: 'Are you sure?' } do %>
-      <span class="fa fa-trash-o"></span>&nbsp;Delete
-      <% end %>
+    <td><%= link_to edit_beat_path(beat) do %><span class="fa fa-edit"></span>&nbsp;Edit<% end %></td>
+    <td><%= link_to beat_path(beat),
+            method: :delete,
+            remote: true,
+            class: 'delete-btn',
+            data: { confirm: 'Are you sure?' } do %>
+    <span class="fa fa-trash-o"></span>&nbsp;Delete
+    <% end %></td>
   <% end %>
-</li>
+</tr>

@@ -1,13 +1,13 @@
-<% if selected_tag == "all" %>
-  <%= link_to "All Beats", "", class: "nav-tags-btn", disabled: true %>
-<% elsif selected_tag %>
-  <%= link_to "#{selected_tag.titleize} Beats", "", class: "nav-tags-btn", disabled: true %>
+<% if selected_tag %>
+  <%= link_to "#{selected_tag.titleize} Beats", "#", class: "button small dropdown secondary", data: { dropdown: "drop1" } %>
 <% else %>
-  <%= link_to "All Beats", "", class: "nav-tags-btn", disabled: true %>
+  <%= link_to "All Beats", "#", class: "button small dropdown secondary", data: { dropdown: "drop1" } %>
 <% end %>
-<ul id="tags">
-  <li><%= link_to "All Beats", beats_path(tag: "all"), method: :get, remote: true, class: "sort-tag" %></li>
+  
+<ul id="drop1" data-dropdown-content class="f-dropdown" aria-hidden="true" tabindex="-1">
+  <li><%= link_to "All Beats", beats_path(tag: "all"), remote: false %></li>
+  
   <% ActsAsTaggableOn::Tag.most_used(10).each do |tag| %>
-    <li><%= link_to tag.name.titleize, beats_path(tag: tag.name), method: :get, remote: true, class: "sort-tag" %></li>
+    <li><%= link_to tag.name.titleize, beats_path(tag: tag.name), remote: false %></li>
   <% end %>
 </ul>

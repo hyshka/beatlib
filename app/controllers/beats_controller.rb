@@ -32,7 +32,7 @@ class BeatsController < ApplicationController
       @sorted = @tsorted.reorder('created_at').reverse_order
     end
 
-    @sorted_beats = @sorted.paginate(:page => params[:page], :per_page => 8)
+    @sorted_beats = @sorted.page params[:page]
 
     # ajax response
     respond_with( @sorted_beats, :layout => !request.xhr? )
@@ -41,6 +41,7 @@ class BeatsController < ApplicationController
   def show
     @favorites = Favorite.all
     @beat = Beat.find(params[:id])
+    @comments = @beat.comments.all
   end
 
   def new
@@ -98,6 +99,6 @@ class BeatsController < ApplicationController
 
   private
     def beat_params
-      params.require(:beat).permit(:title, :description, :genre, :midi, :user_id, :created_by, :tag_list => [])
+      params.require(:beat).permit(:title, :description, :genre, :midi, :user_id, :created_by, :sort, :tag, :page, :q, :tag_list => [])
     end
 end

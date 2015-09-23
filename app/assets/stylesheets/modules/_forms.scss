@@ -39,15 +39,14 @@ select,
 textarea,
 .field {
   display: block;
-  height: 2.25em;
-  @include apply-side-rhythm-border(left, 0px, .25, 14px);
-  @include apply-side-rhythm-border(right, 0px, .25, 14px);
-  @include adjust-font-size-to(14px, 1);
-  color: $body-fg;
-  border-radius: 3px;
+  font-size: 1.125em;
+  padding: .375em .75em;
+  margin-bottom: .75em;
+  color: $form-fg;
+  border-radius: 4px;
   vertical-align: middle;
   box-shadow: none;
-  border: 1px solid;
+  border: 0;
   width: 100%;
   max-width: 400px;
   font-family: $sans-serif;
@@ -111,7 +110,7 @@ input[type="password"] {
 textarea {
   max-width: 100%;
   min-height: 120px;
-  @include adjust-font-size-to(14px, 1);
+  font-size: .9em;
 }
 
 // selects

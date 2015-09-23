@@ -37,17 +37,23 @@ $alert-blue:        #d5edf8;
 $black:             #41453f;
 $white:             #f5f4ed;
 
+$blue:              #1c5991;
+$dark-blue:         #104472;
+$darker-blue:       #063259;
+
+$sec:               #149766;
+
 $light-gray:        darken($white, 3%);
 $gray:              darken($white, 9%);
 
 $border-color:      #ccc;
 $disabled-gray:     #cfcfcf;
 
-$link-color:        $black;
-$link-hover:        darken($link-color, 9%);
+$link-color:        $blue;
+$link-hover:        #104472;
 
 $body-fg:			$black;
-$body-bg:			$white;
+$body-bg:			#fff;
 
 $nav-bg:			lighten($white, 6%);
 $nav-border:		darken($white, 9%);
@@ -64,4 +70,5 @@ $gal-img-shadow:	$nav-shadow;
 
 $form-bg:           lighten($white, 6%);
 $form-bg-active:    $light-gray;
+$form-fg:           $black;
 

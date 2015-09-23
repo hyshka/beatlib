@@ -8,20 +8,10 @@ Stylesheet: Base Mobile Stylesheet
 /*********************
 GENERAL STYLES
 *********************/
-/*
- * 14px base size * 1.5em line height = 21
- * 21 / 2 = 10.5
- * cutting the base-line-height in half allows for easier alignment
- */
-$base-font-size: 14px !global;
-$base-line-height: 10.5px !global;
-@include establish-baseline;
-
-html {
-  @include adjust-leading-to(2); // resets the line height after cutting it in half
-}
 
 body {
+    font-size: 100%;
+	line-height: 1.4;
 	font-family: $sans-serif;
 	color: $body-fg;
     background-color: $body-bg;
@@ -33,13 +23,22 @@ body {
 LAYOUT & GRID STYLES
 *********************/
 
-#container { // 36.5em
-	@include container(45em 12);
+.wrap {
+    padding: 0 .5em;
 }
 
-.header, #content, .footer {
-	@include apply-side-rhythm-border(left, 0px, .75, 14px);
-	@include apply-side-rhythm-border(right, 0px, .75, 14px);
+#logo {
+  @include span(4);
+}
+
+#menu-button {
+  @include span(8 last);
+}
+
+.no-js {
+    #logo {
+        @include span(12);
+    }
 }
 
 /*********************
@@ -48,10 +47,12 @@ LINK STYLES
 
 a, a:visited {
 	color: $link-color;
+  text-decoration: none;
 
 	/* on hover */
 	&:hover, &:focus {
 		color: $link-hover;
+      text-decoration: underline;
 	}
 
 	/* on click */
@@ -89,34 +90,30 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
 }
 
 h1, .h1 {
-	@include leader(2, 28px);
-	@include adjust-font-size-to(28px, 2.5);
-	@include trailer(1.5, 28px);
+    font-size: 2.5em;
+	line-height: 1.2em;
 }
 
 h2, .h2 {
-	@include leader(2, 20px);
-	@include adjust-font-size-to(20px, 2);
-	@include trailer(1.5, 20px);
+    font-size: 1.75em;
+	line-height: 1.2em;
+	//margin-bottom: 0.375em;
 }
 
 h3, .h3 {
-	@include leader(2, 16px);
-	@include adjust-font-size-to(16px, 2);
-	@include trailer(1.5, 16px);
+    font-size: 1.125em;
+    line-height: 1.5em;
 }
 
 h4, .h4 {
-	@include leader(2, 14px);
-	@include adjust-font-size-to(14px, 2);
-	@include trailer(2, 14px);
+    font-size: 1.1em;
+    line-height: 1.5em;
 	font-weight: 700;
 }
 
 h5, .h5 {
-	@include leader(2, 12px);
-	@include adjust-font-size-to(12px, 2);
-	@include trailer(1.5, 12px);
+    font-size: 0.846em;
+	line-height: 2.09em;
 	text-transform: uppercase;
 	letter-spacing: 2px;
 }
@@ -126,85 +123,84 @@ HEADER STYLES
 *********************/
 
 .header {
-    @include trailer(3, 14px);
+  margin-bottom: 1.5em;
 }
 
 #logo {
   margin: 0;
   
-    a {
-      display: block;
-      text-decoration: none;
-      @include rhythm-borders(0px, .75, 14px);
-      @include apply-side-rhythm-border(bottom, 1px, .75, 14px);
-    }
-}
-
-#main-nav {
+  a {
+    display: block;
+    text-decoration: none;
+    padding: 0.5em;
+  }
 }
 
 /*********************
 NAVIGATION STYLES
 *********************/
 
+#menu-button {  
+  .nav {
+    float: right;
+  }
+}
+
+.no-js {
+  #menu-button {
+      display: none;
+  }
+  
+  #main-nav {
+    display: block;
+  }
+}
+
+#main-nav {
+  display: none;
+  position: absolute;
+  top:0;
+  left:0;
+  margin-top: 2.5rem;
+  padding: .375em .5em;
+  background-color: #fff;
+  z-index: 10;
+  width: 100%;
+}
+
+#main-nav.active {
+  display: block;   
+}
+
 .nav {
 	margin: 0;
 
 	li {
-      float: left;
       position: relative;
 
 		a {
 			display: block;
 			text-decoration: none;
-			@include rhythm-borders(0px, .75, 14px);
-			@include apply-side-rhythm-border(bottom, 1px, .75, 14px);
+			padding: 0.5em;
 		}
 
 		&:first-child {}
 
 		&:last-child {}
 
-        ul.sub-menu,
-		ul.children {
-			display: block;
-			margin: 0;
-			@include apply-side-rhythm-border(left, 0px, 1.5, 14px);
-			@include trailer(.75, 14px);
-
-			li {
-
-				a {
-					@include apply-side-rhythm-border(top, 0px, .375, 14px);
-					@include apply-side-rhythm-border(bottom, 0px, .375, 14px);
-				}
-			}
-		}
-
 	} /* end .menu li */
-
-	/* highlight current page */
-	li.current-menu-item,
-	li.current_page_item,
-	li.current_page_ancestor {
-
-		a {
-            background-color: $nav-active;
-        }
-
-	}  /* end current highlighters */
 
 } /* end .nav */
 
 #nav-beats {
-  @include trailer(1.5, 14px);
+    margin-bottom: 1.5em;
 
   ul {
    margin: 0;
 
    li {
      @include gallery(6 of 12);
-     @include trailer(.75, 14px);
+      margin-bottom: .75em;
      position: relative;
 
      #tags {
@@ -246,7 +242,9 @@ NAVIGATION STYLES
   max-height: 0;
   @include transition(all .5s ease-in-out);
 
-
+  .sort-tag {
+    color: $black; 
+  }
 
   &.active {
     @include opacity(1);
@@ -257,20 +255,50 @@ NAVIGATION STYLES
 .nav-search-btn {
   @include box-sizing(border-box !important);
   color: $body-fg !important;
-  @include adjust-leading-to(2, 14px);
 }
 
 /*********************
 POSTS & CONTENT STYLES
 *********************/
 
+.hero {
+  padding-bottom: 1.5em;
+  
+  .page-title {
+    margin-bottom: 0;
+  }
+  
+  .hero-text {
+    font-size: 1.5em;
+    margin-top: .75em;
+    margin-bottom: .75em;
+  }
+  
+  p {
+    margin: 1.5em 0;
+  }
+}
+
+#side-nav {
+  font-size: .9em;
+  
+  ul {
+    padding: 0;
+    margin: 0;
+    
+    li {
+      text-indent: 0;
+      margin-bottom: .375em;
+    }
+  }
+}
+
 #beats {
-  @include leader(3, 14px);
+    margin-top: 3em;
 }
 
 p, ul, ol {
-    @include leader(1.5, 14px);
-    @include trailer(1.5, 14px);
+    margin: 0 0 1.5em;
 }
 
 #content {
@@ -368,24 +396,28 @@ p, ul, ol {
 /* post meta */
 .byline {
     font-style: italic;
-    @include leader(.75, 12px);
-    @include trailer(0, 12px);
-    @include adjust-font-size-to(12px, 1);
+    margin-top: .75em;
+    margin-bottom: 0;
+    font-size: .75em;
+}
+
+.page-title {
+  //margin-bottom: 0em;
 }
 
 /* content */
 .entry-content {
 
     ul, ol {
-        @include apply-side-rhythm-border(left, 0px, 1, 14px);
-        margin-left:1em;
+        padding-left: 1.125em;
+        margin-left: 1.5em;
 
         li {
-            text-indent:-1em;
+            text-indent: -1.125em;
         }
 
         ol,ul {
-            @include apply-side-rhythm-border(left, 0px, 2, 14px);
+            padding-left: 3em;
             margin: 0;
         }
 
@@ -407,6 +439,39 @@ p, ul, ol {
         }
 
     }
+  
+  .steps {
+    margin: 1.5em 0;
+    padding-left: 0;
+    list-style-type: none;
+    text-align: center;
+
+    li {
+      text-indent: 0;
+      margin-bottom: 1.5em;
+      
+      span {
+        display: block;
+        margin-bottom: .125em;
+        //color: $sec;
+      }
+      
+      &:last-child {
+        margin: 0;
+      }
+    }
+  }
+  
+  .cta {
+    text-align: center;
+    margin-bottom: .75em;
+  }
+  
+  .cta-byline {
+    text-align: center;
+    font-size: .9em;
+    margin-bottom: 1.5em;
+  }
 
 } /* end .entry-content */
 
@@ -455,7 +520,7 @@ COMMENT STYLES
   }
 
   .delete-comment {
-    @include adjust-font-size-to(12px, 1);
+    font-size: .75em;
   }
 }
 
@@ -530,6 +595,10 @@ FOOTER STYLES
 *********************/
 
 .footer {
-	clear: both;
-	@include trailer(1.5, 14px);
+  clear: both;
+  margin: 1.5em 0;
+  
+  .dev {
+    margin-bottom: 3em;
+  }
 }

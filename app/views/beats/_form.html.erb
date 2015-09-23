@@ -1,46 +1,18 @@
-<%= form_for @beat do |f| %>
+<%= f.hidden_field :user_id, value: current_user.id %>
+<%= f.hidden_field :created_by, value: current_user.name %>
 
-  <%= f.hidden_field :user_id, value: current_user.id %>
-  <%= f.hidden_field :created_by, value: current_user.name %>
+<%= f.input_div :title %>
 
-  <% if @beat.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@beat.errors.count, "error") %> prohibited
-        this beat from being saved:
-      </h2>
-      <ul>
-        <% @beat.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= f.input_div :description %>
 
-  <p>
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </p>
+<p>
+  <%= f.label :tags %>
+  Add your genre, time signatures, or other labels here to help people find your beats. The first tag in this list will be chosen as the primary and there is a maximum of 5 tags.<br>
+  <%= f.collection_select(:tag_list, ActsAsTaggableOn::Tag.all, :name, :name, {}, { multiple: 'multiple' } ) %>
+</p>
 
-  <p>
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </p>
-
-  <p>
-    <%= f.label :tags %><br>
-    Add your genre, time signatures, or other labels here to help people find your beats. The first tag in this list will be chosen as the primary and there is a maximum of 5 tags.<br>
-    <%= f.collection_select(:tag_list, ActsAsTaggableOn::Tag.all, :name, :name, {}, { multiple: 'multiple' } ) %>
-  </p>
-
-  <p>
-    <%= f.label :midi_upload %><br>
-    Midi files only with a maximum filesize of 10kb<br>
-    <%= f.file_field :midi %>
-  </p>
-
-  <p>
-    <%= f.submit %>
-  </p>
-
-<% end %>
+<p>
+  <%= f.label :midi_upload %>
+  Midi files only with a maximum filesize of 10kb<br>
+  <%= f.file_field :midi %>
+</p>

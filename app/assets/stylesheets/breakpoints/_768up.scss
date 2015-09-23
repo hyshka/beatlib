@@ -10,43 +10,50 @@ Stylesheet: Tablet & Small Desktop Stylesheet
 GENERAL STYLES
 *********************/
 
-$base-font-size: 18px !global;
-$base-line-height: 13.5px !global;
-@include establish-baseline;
-
-html {
-  @include adjust-leading-to(2);
+body {
+    //24px, 1.5
+    font-size: 150%;
+    //background-color: $black;
 }
 
 /*********************
 LAYOUT & GRID STYLES
 *********************/
 
-.header, #content, .footer {
-	@include apply-side-rhythm-border(left, 0px, 1.5, 18px);
-	@include apply-side-rhythm-border(right, 0px, 1.5, 18px);
+#container {
+    //background-color: $body-bg;
+    @include container(47.500em 12);
 }
 
+.narrow {
+  @include container(30em 12 left);
+  //@include span(8);
+}
+
+.wrap {
+    padding: 0 1em;
+}
+
+.header {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+#main-nav {
+  @include span(8 last);
+}
+
+
 .beat-index {
-  //@include span();
   @include gallery(6 of 12);
 }
 
 #nav-beats {
-  //@include span(6);
   ul {
     li {
       @include gallery(3 of 12);
     }
   }
-}
-
-#nav-tags {
-  //@include span(3);
-}
-
-#search {
-  //@include span(3 last);
 }
 
 .beat-show {
@@ -56,18 +63,27 @@ LAYOUT & GRID STYLES
 #comments {
   @include span(6 last);
 }
+
+.hero {
+  @include span(8);
+}
+
+#side-nav {
+  @include span(4 last);
+}
+
 /*********************
 HEADER STYLES
 *********************/
 
-.header {}
+.header {
+  margin-top: .75em;
+  margin-bottom: 4.5em;
+}
 
 #logo {
-    @include span(3);
-    @include leader(1.5, 18px);
     
     a {
-        @include apply-side-rhythm-border(bottom, 0px, .75, 18px);
         
         &:hover, &:focus {
             text-decoration: underline;
@@ -75,26 +91,31 @@ HEADER STYLES
     }
 }
 
-#nav-main {
-  @include span(9 last);
-  @include leader(1.5, 18px);
-  text-align: right;
-  
-  .nav {
-    display:inline-block;
-  }
-}
-
 /*********************
 NAVIGATION STYLES
 *********************/
 
+#menu-button {
+  display: none;
+}
+
+#main-nav {
+  display: block;
+  position: relative;
+  margin-top: 0;
+  padding: 0;
+  
+  .nav {
+    float: right;
+  }
+}
+
 .nav {
 
 	li {
+      float: left;
 
 		a {
-			@include apply-side-rhythm-border(bottom, 0px, .75, 18px);
             
             &:after {
 				content: '';
@@ -108,61 +129,6 @@ NAVIGATION STYLES
 
 		&:first-child {}
 		&:last-child {}
-        
-        &.menu-item-has-children {
-			background: transparent;
-			
-		}
-
-		/*
-		plan your menus and drop-downs wisely.
-		*/
-		ul.sub-menu,
-		ul.children {
-			background: white;
-			@include apply-side-rhythm-border(left, 0px, 0, 18px);
-			margin-top: 0;
-			border: 1px solid #ccc;
-			position: absolute;
-			visibility: hidden;
-			z-index: 8999;
-
-			li {
-
-				a {
-					display: block;
-					width: 180px;
-					border-bottom: 1px solid #ccc;
-
-					&:hover,
-					&:focus {}
-
-					&:link {}
-				}
-
-				&:first-child {}
-
-				&:last-child {
-
-					a {
-						border-bottom: 0;
-					}
-				}
-			}
-
-			/* highlight sub-menu current page */
-			li.current-menu-item,
-			li.current_page_item,
-			li.current_page_ancestor {
-				a {}
-			}
-		}
-
-		/* showing sub-menus */
-		&:hover > ul {
-			top: auto;
-			visibility:visible;
-		}
 
 	} /* end .menu ul li */
 
@@ -177,48 +143,39 @@ NAVIGATION STYLES
 
 } /* end .nav */
 
-#nav-beats {
-  
- 
-}
-
-
 
 /*********************
 POSTS & CONTENT STYLES
 *********************/
 
-#search, #nav-tags {
-  @include leader(0, 18px);
+.hero {
+  padding-bottom: 3em;
 }
 
-#beats {
-  //@include leader(6, 18px);
-}
-
-.beat {
+.entry-content {
   
-  header {
-    //@include span(9 last);
-
-  }
-  
-  .audio {
-    //@include span(3);
-
-  }
-  
-  footer {
+  .steps {
+    //margin: 3em 0;
     
-    .meta {
-      
+    li {
+      @include gallery(4 of 12);
     }
-  } 
+  }
+}
+
+#side-nav {
+  margin-top: 6em;
+  padding-left: 1.5em;
+}
+
+#search, #nav-tags {
+    margin-top: 0;
 }
 
 #comments {
-  @include leader(6, 18px);
+    margin-top: 6em;
 }
+
 
 /*********************
 FOOTER STYLES
